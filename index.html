@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keang Liu — MBA Candidate | Digital Marketing & Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #1a1a1a;
+      background-color: #fafaf9;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .hero__content h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2.75rem, 8vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero__tagline {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #525252;
+      letter-spacing: 0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .hero__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn--primary {
+      background-color: #2d5a4a;
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background-color: #234a3c;
+      transform: translateY(-1px);
+    }
+
+    .btn--secondary {
+      background-color: transparent;
+      color: #2d5a4a;
+      border: 2px solid #2d5a4a;
+    }
+
+    .btn--secondary:hover {
+      background-color: #2d5a4a;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+      border-top: 1px solid #e7e5e4;
+    }
+
+    .section__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #737373;
+      margin-bottom: 0.5rem;
+    }
+
+    .section__title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Skills */
+    .skills-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .skills-group h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #404040;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #2d5a4a;
+      background-color: #e8f0ed;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .tag:hover {
+      background-color: #2d5a4a;
+      color: #fff;
+    }
+
+    /* Education */
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .education-item {
+      padding: 1.25rem 1.5rem;
+      background-color: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .education-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-color: #d4d4d4;
+    }
+
+    .education-item__school {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111;
+      margin-bottom: 0.25rem;
+    }
+
+    .education-item__degree {
+      font-size: 0.9375rem;
+      color: #404040;
+      margin-bottom: 0.35rem;
+    }
+
+    .education-item__meta {
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+
+    /* Experience & Projects Cards */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .card {
+      padding: 1.5rem;
+      background-color: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-color: #d4d4d4;
+    }
+
+    .card__header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.25rem 1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .card__header-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.5rem;
+    }
+
+    .card__header-main .card__company::before {
+      content: '·';
+      margin-right: 0.5rem;
+      color: #a3a3a3;
+      font-weight: 400;
+    }
+
+    .card__title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111;
+    }
+
+    .card__company {
+      font-size: 0.9375rem;
+      color: #525252;
+    }
+
+    .card__date {
+      font-size: 0.8125rem;
+      color: #737373;
+      flex-shrink: 0;
+    }
+
+    .card__bullets {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .card__bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.9375rem;
+      color: #404040;
+      line-height: 1.5;
+    }
+
+    .card__bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #2d5a4a;
+      font-weight: 700;
+    }
+
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .card__tags .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+    }
+
+    /* Contact Form */
+    .contact__subtitle {
+      font-size: 0.9375rem;
+      color: #525252;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form {
+      max-width: 28rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #404040;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: #111;
+      background-color: #fff;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2d5a4a;
+      box-shadow: 0 0 0 3px rgba(45, 90, 74, 0.12);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form .btn--primary {
+      margin-top: 0.25rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+      border-top: 1px solid #e7e5e4;
+    }
+
+    footer p {
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero__content container">
+        <h1>Keang Liu</h1>
+        <p class="hero__tagline">MBA Candidate | Digital Marketing & Analytics</p>
+        <div class="hero__buttons">
+          <a href="#skills" class="btn btn--primary">View My Work</a>
+          <a href="#contact" class="btn btn--secondary">Get In Touch</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <p class="section__label">Skills</p>
+        <h2 class="section__title">What I Do</h2>
+        <div class="skills-groups">
+          <div class="skills-group">
+            <h3>Marketing</h3>
+            <div class="skills-tags">
+              <span class="tag">Digital Marketing</span>
+              <span class="tag">SEO/SEM</span>
+              <span class="tag">HubSpot CRM</span>
+              <span class="tag">Google Analytics</span>
+              <span class="tag">Google Ads</span>
+              <span class="tag">Social Media Marketing</span>
+              <span class="tag">Content Strategy</span>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3>Analytics</h3>
+            <div class="skills-tags">
+              <span class="tag">SQL (in progress)</span>
+              <span class="tag">Excel & Pivot Tables</span>
+              <span class="tag">Demand Forecasting</span>
+              <span class="tag">Campaign Metrics</span>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3>Tools</h3>
+            <div class="skills-tags">
+              <span class="tag">Canva</span>
+              <span class="tag">Adobe Photoshop</span>
+              <span class="tag">Asana</span>
+              <span class="tag">PowerPoint</span>
+              <span class="tag">Google Workspace</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="education">
+      <div class="container">
+        <p class="section__label">Background</p>
+        <h2 class="section__title">Education</h2>
+        <div class="education-list">
+          <div class="education-item">
+            <div class="education-item__school">University of California, Riverside</div>
+            <div class="education-item__degree">Master of Business Administration, Concentration: Marketing</div>
+            <div class="education-item__meta">GPA 3.7 | Expected June 2026</div>
+          </div>
+          <div class="education-item">
+            <div class="education-item__school">University of Illinois, Urbana-Champaign</div>
+            <div class="education-item__degree">Bachelor of Arts in Sociology</div>
+            <div class="education-item__meta">Graduated May 2023</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience">
+      <div class="container">
+        <p class="section__label">Work</p>
+        <h2 class="section__title">Experience</h2>
+        <div class="cards-list">
+          <article class="card">
+            <div class="card__header">
+              <div class="card__header-main">
+                <span class="card__title">Teaching Assistant</span>
+                <span class="card__company">UCR</span>
+              </div>
+              <span class="card__date">Sep 2025 – Jun 2026</span>
+            </div>
+            <ul class="card__bullets">
+              <li>Designed structured lectures for 100+ students using Google Slides.</li>
+              <li>Conducted LinkedIn resume workshops, improving average project grade by 8%.</li>
+            </ul>
+            <div class="card__tags">
+              <span class="tag">Google Slides</span>
+              <span class="tag">LinkedIn</span>
+              <span class="tag">Coaching</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__header">
+              <div class="card__header-main">
+                <span class="card__title">Administrative Assistant</span>
+                <span class="card__company">Amazing International Group</span>
+              </div>
+              <span class="card__date">Oct 2023 – Jun 2024</span>
+            </div>
+            <ul class="card__bullets">
+              <li>Ran HubSpot email outreach campaigns, boosting click rates by 12%.</li>
+              <li>Published weekly WeChat social content tracked via Google Analytics, increasing audience interaction by 15%.</li>
+            </ul>
+            <div class="card__tags">
+              <span class="tag">HubSpot</span>
+              <span class="tag">Google Analytics</span>
+              <span class="tag">WeChat</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__header">
+              <div class="card__header-main">
+                <span class="card__title">Marketing Coordinator</span>
+                <span class="card__company">Laoniu Foundation</span>
+              </div>
+              <span class="card__date">May 2021 – Apr 2022</span>
+            </div>
+            <ul class="card__bullets">
+              <li>Created marketing visuals with Adobe Photoshop & Canva, growing social engagement by 17%.</li>
+              <li>Analyzed campaign metrics in Excel using pivot tables, improving CTR by 10%.</li>
+              <li>Grew audience reach by 14% via strategic Baidu News campaign timing.</li>
+            </ul>
+            <div class="card__tags">
+              <span class="tag">Canva</span>
+              <span class="tag">Adobe Photoshop</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Baidu News</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__header">
+              <div class="card__header-main">
+                <span class="card__title">Administrative Assistant</span>
+                <span class="card__company">China Mengniu Dairy</span>
+              </div>
+              <span class="card__date">Jun 2020 – Apr 2021</span>
+            </div>
+            <ul class="card__bullets">
+              <li>Tracked 5+ online promotional campaigns and managed timelines and deliverables.</li>
+              <li>Built competitor analysis pitch decks in Excel & PowerPoint.</li>
+            </ul>
+            <div class="card__tags">
+              <span class="tag">Excel</span>
+              <span class="tag">PowerPoint</span>
+              <span class="tag">Campaign Management</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <p class="section__label">Achievements</p>
+        <h2 class="section__title">Projects & Competitions</h2>
+        <div class="cards-list">
+          <article class="card">
+            <div class="card__header">
+              <div class="card__header-main">
+                <span class="card__title">International Collegiate Business Strategy Competition (ICBSC)</span>
+                <span class="card__company">CMO</span>
+              </div>
+              <span class="card__date">April 2026</span>
+            </div>
+            <ul class="card__bullets">
+              <li>Executed market penetration strategy using customer preference data, growing Area 3 market share from 25% to 33.4%.</li>
+              <li>Optimized multi-regional ad budgets via demand forecasting, driving 79% EBT growth within one year.</li>
+            </ul>
+            <div class="card__tags">
+              <span class="tag">Strategy</span>
+              <span class="tag">Market Analysis</span>
+              <span class="tag">Budget Optimization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <p class="section__label">Contact</p>
+        <h2 class="section__title">Get In Touch</h2>
+        <p class="contact__subtitle">Have a question or opportunity? Leave a message below.</p>
+        <form class="contact-form" action="https://formspree.io/f/mzdjzgne" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Your message"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 Keang Liu</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
