@@ -351,6 +351,133 @@
       margin-top: 0.25rem;
     }
 
+    /* Free Resource */
+    .free-resource {
+      background-color: #f8f9fa;
+      border-top-color: #e8e9ea;
+    }
+
+    .free-resource .free-resource__card {
+      max-width: 32rem;
+      margin: 0 auto;
+      padding: 2rem 1.75rem;
+      background-color: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .free-resource .section__title {
+      margin-bottom: 0.75rem;
+    }
+
+    .free-resource__subhead {
+      font-size: 0.9375rem;
+      color: #525252;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .free-resource__benefits {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .free-resource__benefits li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9375rem;
+      color: #404040;
+      line-height: 1.5;
+    }
+
+    .free-resource__benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #2d5a4a;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .free-resource-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .free-resource-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.65rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: #111;
+      background-color: #fff;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .free-resource-form input:focus {
+      outline: none;
+      border-color: #2d5a4a;
+      box-shadow: 0 0 0 3px rgba(45, 90, 74, 0.12);
+    }
+
+    .free-resource-form input::placeholder {
+      color: #a3a3a3;
+    }
+
+    .free-resource-form .btn--primary {
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    .free-resource__disclaimer {
+      font-size: 0.75rem;
+      color: #737373;
+      margin-bottom: 1rem;
+    }
+
+    .free-resource__social-proof {
+      font-size: 0.8125rem;
+      color: #737373;
+      font-style: italic;
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(250, 250, 249, 0.95);
+      border-bottom: 1px solid #e7e5e4;
+      padding: 0.75rem 0;
+    }
+
+    .nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+    }
+
+    .nav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #404040;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav__link:hover {
+      color: #2d5a4a;
+    }
+
     /* Footer */
     footer {
       padding: 2rem 0 3rem;
@@ -365,6 +492,13 @@
   </style>
 </head>
 <body>
+  <nav class="nav">
+    <div class="container">
+      <a href="#skills" class="nav__link">View My Work</a>
+      <a href="#free-resource" class="nav__link">Free Template</a>
+      <a href="#contact" class="nav__link">Get In Touch</a>
+    </div>
+  </nav>
   <main>
     <header class="hero">
       <div class="hero__content container">
@@ -545,6 +679,27 @@
               <span class="tag">Budget Optimization</span>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="free-resource" class="free-resource">
+      <div class="container">
+        <p class="section__label">FREE DOWNLOAD</p>
+        <div class="free-resource__card">
+          <h2 class="section__title">Get the Resume Template That Helped Marketing Students Land Interviews</h2>
+          <p class="free-resource__subhead">A clean, ATS-friendly resume template with pre-written bullet point examples for marketing roles. Used by UCR MBA students. 100% free.</p>
+          <ul class="free-resource__benefits">
+            <li>ATS-optimized format that passes resume screening</li>
+            <li>Pre-written marketing bullet point examples you can customize</li>
+            <li>Bonus job search checklist included</li>
+          </ul>
+          <form class="free-resource-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+            <input type="email" name="email" required placeholder="Enter your email address" aria-label="Email address">
+            <button type="submit" class="btn btn--primary">Send Me the Free Template</button>
+          </form>
+          <p class="free-resource__disclaimer">No spam. Unsubscribe anytime.</p>
+          <p class="free-resource__social-proof">Joined by 50+ marketing students</p>
         </div>
       </div>
     </section>
