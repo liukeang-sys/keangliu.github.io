@@ -401,6 +401,29 @@
       font-size: 1rem;
     }
 
+    .free-resource__preview {
+      margin: 1.5rem auto 1.5rem;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .free-resource__preview-img {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 2px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.06);
+      transform: rotate(-1deg);
+    }
+
+    .free-resource__preview-caption {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+
     .free-resource-form {
       display: flex;
       flex-wrap: wrap;
@@ -694,6 +717,10 @@
             <li>Pre-written marketing bullet point examples you can customize</li>
             <li>Bonus job search checklist included</li>
           </ul>
+          <div class="free-resource__preview">
+            <img src="Free Resume Sample.png" alt="Resume template preview" class="free-resource__preview-img">
+            <p class="free-resource__preview-caption">Preview of the template</p>
+          </div>
           <form class="free-resource-form" action="https://formspree.io/f/YOUR_ID" method="POST">
             <input type="email" name="email" required placeholder="Enter your email address" aria-label="Email address">
             <button type="submit" class="btn btn--primary">Send Me the Free Template</button>
