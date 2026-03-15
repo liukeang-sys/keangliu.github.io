@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Resume Template — Keang Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #1a1a1a;
+      background-color: #f8f9fa;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn--primary {
+      background-color: #2d5a4a;
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background-color: #234a3c;
+      transform: translateY(-1px);
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(248, 249, 250, 0.95);
+      border-bottom: 1px solid #e7e5e4;
+      padding: 0.75rem 0;
+    }
+
+    .nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+    }
+
+    .nav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #404040;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav__link:hover {
+      color: #2d5a4a;
+    }
+
+    /* Main content */
+    main {
+      padding: 4rem 0;
+    }
+
+    .section__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #737373;
+      margin-bottom: 0.5rem;
+    }
+
+    .section__title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 0.75rem;
+    }
+
+    .free-resource__card {
+      max-width: 32rem;
+      margin: 0 auto;
+      padding: 2rem 1.75rem;
+      background-color: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .free-resource__subhead {
+      font-size: 0.9375rem;
+      color: #525252;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .free-resource__benefits {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .free-resource__benefits li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9375rem;
+      color: #404040;
+      line-height: 1.5;
+    }
+
+    .free-resource__benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #2d5a4a;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .free-resource__preview {
+      margin: 1.5rem auto 1.5rem;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .free-resource__preview-img {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 2px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.06);
+      transform: rotate(-1deg);
+      filter: blur(4px);
+    }
+
+    .free-resource__preview-caption {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+
+    .free-resource-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .free-resource-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.65rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: #111;
+      background-color: #fff;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .free-resource-form input:focus {
+      outline: none;
+      border-color: #2d5a4a;
+      box-shadow: 0 0 0 3px rgba(45, 90, 74, 0.12);
+    }
+
+    .free-resource-form input::placeholder {
+      color: #a3a3a3;
+    }
+
+    .free-resource-form .btn--primary {
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    .free-resource__disclaimer {
+      font-size: 0.75rem;
+      color: #737373;
+      margin-bottom: 1rem;
+    }
+
+    .free-resource__social-proof {
+      font-size: 0.8125rem;
+      color: #737373;
+      font-style: italic;
+    }
+
+    .free-resource__thank-you {
+      display: none;
+      padding: 1rem 0;
+      font-size: 0.9375rem;
+      color: #2d5a4a;
+      font-weight: 500;
+    }
+
+    .free-resource__thank-you.is-visible {
+      display: block;
+    }
+
+    .free-resource__form-wrap.is-hidden {
+      display: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+      border-top: 1px solid #e7e5e4;
+    }
+
+    footer p {
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav__link">Back to Portfolio</a>
+    </div>
+  </nav>
+  <main>
+    <section class="free-resource">
+      <div class="container">
+        <p class="section__label">FREE DOWNLOAD</p>
+        <div class="free-resource__card">
+          <h1 class="section__title">Get the Resume Template That Helped Marketing Students Land Interviews</h1>
+          <p class="free-resource__subhead">A clean, ATS-friendly resume template with pre-written bullet point examples for marketing roles. Used by UCR MBA students. 100% free.</p>
+          <ul class="free-resource__benefits">
+            <li>ATS-optimized format that passes resume screening</li>
+            <li>Pre-written marketing bullet point examples you can customize</li>
+            <li>Bonus job search checklist included</li>
+          </ul>
+          <div class="free-resource__preview">
+            <img src="Free Resume Sample.png" alt="Resume template preview" class="free-resource__preview-img">
+            <p class="free-resource__preview-caption">Preview of the template</p>
+          </div>
+          <div class="free-resource__form-wrap">
+            <form id="free-resource-form" class="free-resource-form">
+              <input type="email" id="free-resource-email" name="email" required placeholder="Enter your email address" aria-label="Email address">
+              <button type="submit" class="btn btn--primary">Send Me the Free Template</button>
+            </form>
+            <p class="free-resource__disclaimer">No spam. Unsubscribe anytime.</p>
+            <p class="free-resource__social-proof">Joined by 50+ marketing students</p>
+          </div>
+          <p id="thank-you-message" class="free-resource__thank-you" aria-live="polite">Your files are downloading! Check your downloads folder.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>© 2026 Keang Liu</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('free-resource-form');
+      var formWrap = document.querySelector('.free-resource__form-wrap');
+      var thankYou = document.getElementById('thank-you-message');
+      var FORMSPREE_URL = 'https://formspree.io/f/YOUR_ID';
+      var PDF_FILE = 'Free Resume Sample.pdf';
+      var DOCX_FILE = 'Free Resume Template.docx';
+
+      function triggerDownload(url, filename) {
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename || url;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var emailInput = document.getElementById('free-resource-email');
+        var email = (emailInput && emailInput.value) ? emailInput.value.trim() : '';
+
+        if (!email) return;
+
+        // Submit to Formspree
+        var formData = new FormData();
+        formData.append('email', email);
+        fetch(FORMSPREE_URL, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).catch(function () {});
+
+        // Trigger downloads (same-origin files)
+        triggerDownload(PDF_FILE, 'Free Resume Sample.pdf');
+        setTimeout(function () {
+          triggerDownload(DOCX_FILE, 'Free Resume Template.docx');
+        }, 150);
+
+        // Show thank you and hide form
+        if (formWrap) formWrap.classList.add('is-hidden');
+        if (thankYou) thankYou.classList.add('is-visible');
+      });
+    })();
+  </script>
+</body>
+</html>
