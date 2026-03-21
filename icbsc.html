@@ -9,41 +9,94 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --bg: #ffffff; --bg2: #f6f6f4; --ink: #0f0f0e;
-    --muted: #8a8a86; --border: #e2e2de; --yellow: #f5c800;
-    --blue: #1a56db; --blue-bg: #eef2fd;
+    --bg: #ffffff; --bg2: #f6f6f4; --ink: #0f0f0e; --muted: #8a8a86;
+    --border: #e2e2de; --yellow: #f5c800; --blue: #1a56db; --blue-bg: #eef2fd;
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; }
-  nav {
-    position: sticky; top: 0; z-index: 200;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 56px; background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
-  }
+  body { background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 20px 56px; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: 'Instrument Serif', serif; font-size: 19px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--ink); }
-  .nav-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: #fff; border: none; padding: 10px 24px; cursor: pointer; transition: background .2s; text-decoration: none; }
+  .nav-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: #fff; border: none; padding: 10px 24px; cursor: pointer; transition: background .2s; text-decoration: none; display: inline-block; }
   .nav-btn:hover { background: var(--blue); }
-  .coming-soon {
-    min-height: calc(100vh - 65px);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 80px 56px;
-    border-bottom: 1px solid var(--border);
-  }
-  .cs-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 24px; }
-  .cs-title { font-family: 'Instrument Serif', serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 24px; }
-  .cs-title .blue-italic { font-style: italic; color: var(--blue); }
-  .cs-sub { font-size: 15px; color: var(--muted); max-width: 400px; line-height: 1.8; margin-bottom: 40px; }
-  .back-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 13px 28px; text-decoration: none; transition: background .2s; }
-  .back-btn:hover { background: var(--blue); }
+
+  /* PAGE HEADER */
+  .page-header { padding: 80px 56px 64px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; margin-bottom: 32px; transition: color .2s; }
+  .back-link:hover { color: var(--ink); }
+  .page-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-title { font-family: 'Instrument Serif', serif; font-size: clamp(42px, 5.5vw, 72px); line-height: 0.95; letter-spacing: -0.03em; }
+  .page-title em { font-style: italic; color: var(--blue); }
+  .page-desc { font-size: 15px; color: var(--muted); line-height: 1.8; }
+
+  /* SECTIONS */
+  section { border-bottom: 1px solid var(--border); }
+
+  .two-col { display: grid; grid-template-columns: 240px 1fr; }
+  .section-sidebar { padding: 56px 48px 56px 56px; border-right: 1px solid var(--border); }
+  .section-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; }
+  .sidebar-title { font-family: 'Instrument Serif', serif; font-size: 32px; line-height: 1.05; letter-spacing: -0.02em; margin-top: 16px; }
+  .section-body { padding: 56px; }
+
+  /* STAT CARDS */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 0; }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); padding: 28px 24px; }
+  .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .stat-val { font-family: 'Instrument Serif', serif; font-size: 28px; letter-spacing: -0.02em; color: var(--ink); line-height: 1; }
+  .stat-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  /* BRAND SECTION */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .brand-info {}
+  .brand-label { font-size: 10px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+  .brand-name { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 8px; }
+  .brand-name em { font-style: italic; color: var(--blue); }
+  .brand-tagline { font-size: 14px; color: var(--muted); margin-bottom: 28px; font-style: italic; }
+  .brand-desc { font-size: 14px; color: var(--ink); line-height: 1.8; margin-bottom: 28px; }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .brand-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--border); color: var(--muted); }
+  .visit-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; text-decoration: none; transition: background .2s; }
+  .visit-btn:hover { background: var(--blue); }
+
+  /* WEBSITE MOCKUP FRAME */
+  .mockup-frame { border: 1px solid var(--border); overflow: hidden; }
+  .mockup-bar { background: var(--bg2); padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .mockup-dots { display: flex; gap: 6px; }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .mockup-url { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; background: var(--bg); border: 1px solid var(--border); padding: 4px 12px; flex: 1; }
+  .mockup-embed { width: 100%; height: 420px; border: none; display: block; }
+
+  /* MY ROLE */
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .role-card { padding: 28px 24px; border: 1px solid var(--border); }
+  .role-card-icon { width: 28px; height: 28px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .role-card-title { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+  .role-card-text { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+  /* COMING SOON PLACEHOLDER */
+  .coming-soon { background: var(--bg2); border: 1px solid var(--border); padding: 56px 40px; text-align: center; }
+  .coming-soon-icon { width: 40px; height: 40px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; margin: 0 auto 16px; }
+  .coming-soon-label { font-size: 10px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 10px; }
+  .coming-soon-title { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink); margin-bottom: 8px; }
+  .coming-soon-text { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 360px; margin: 0 auto; }
+
+  /* FOOTER */
   footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 56px; border-top: 1px solid var(--border); }
   .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: color .2s; background: none; border: none; }
+  .footer-back:hover { color: var(--ink); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Keang Liu</a>
   <ul class="nav-links">
@@ -54,15 +107,180 @@
   <a href="index.html#contact" class="nav-btn">Get In Touch</a>
 </nav>
 
-<section class="coming-soon">
-  <div class="cs-tag">Competition · Strategy</div>
-  <h1 class="cs-title">ICBSC<br><span class="blue-italic">Competition</span></h1>
-  <p class="cs-sub">This page is coming soon. Check back later for a full breakdown of strategy, research, and results.</p>
-  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <a href="index.html#work" class="back-link">← Back to Projects</a>
+    <div class="page-tag">Competition · Strategy · Brand</div>
+    <h1 class="page-title">ICBSC<br><em>Competition</em></h1>
+  </div>
+  <p class="page-desc">The 62nd International Collegiate Business Strategy Competition — a global simulation where teams run a company from the ground up, competing across strategy, marketing, finance, and operations. Role: Chief Marketing Officer.</p>
+</div>
+
+<!-- COMPETITION OVERVIEW -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">About</span>
+      <h2 class="sidebar-title">The Competition</h2>
+    </div>
+    <div class="section-body">
+      <div class="stat-row" style="margin-bottom:36px;">
+        <div class="stat-card">
+          <div class="stat-label">Competition</div>
+          <div class="stat-val">ICBSC</div>
+          <div class="stat-sub">62nd Annual · 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">My Role</div>
+          <div class="stat-val">CMO</div>
+          <div class="stat-sub">Chief Marketing Officer</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Team Size</div>
+          <div class="stat-val">3</div>
+          <div class="stat-sub">MBA students, UCR</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.85;max-width:600px;">ICBSC is an international business simulation hosted by Cal State Long Beach, where university teams compete by running a simulated company across multiple rounds. Teams make real strategic decisions — pricing, production, marketing spend, R&D investment — and are evaluated on business performance. The 2026 competition runs January through April, culminating in a 3-day on-site intensive in Anaheim.</p>
+    </div>
+  </div>
 </section>
 
+<!-- CITRION BRAND -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">Brand</span>
+      <h2 class="sidebar-title">Citrion</h2>
+    </div>
+    <div class="section-body">
+      <div class="brand-grid">
+        <div class="brand-info">
+          <div class="brand-label">Our Brand</div>
+          <h2 class="brand-name">Citrion<br><em>Lip Care,</em><br>Elevated.</h2>
+          <p class="brand-tagline">Peptide-infused tinted lip balms for effortless color and care.</p>
+          <p class="brand-desc">Citrion was built as the marketing vehicle for our ICBSC simulation. As CMO, I developed the brand identity, positioning strategy, and built the product website from scratch to demonstrate how a real DTC beauty brand would present itself to consumers and investors.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Beauty / Skincare</span>
+            <span class="brand-tag">DTC Brand</span>
+            <span class="brand-tag">Brand Strategy</span>
+            <span class="brand-tag">Web Design</span>
+          </div>
+          <a href="https://citrion.site/" target="_blank" class="visit-btn">Visit Citrion Site ↗</a>
+        </div>
+        <div>
+          <div class="mockup-frame">
+            <div class="mockup-bar">
+              <div class="mockup-dots">
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+              </div>
+              <div class="mockup-url">citrion.site</div>
+            </div>
+            <iframe src="https://citrion.site/" class="mockup-embed" title="Citrion website preview"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MY ROLE AS CMO -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">Responsibilities</span>
+      <h2 class="sidebar-title">My Role as CMO</h2>
+    </div>
+    <div class="section-body">
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-card-icon">B</div>
+          <div class="role-card-title">Brand Identity</div>
+          <div class="role-card-text">Developed Citrion's name, visual identity, tone of voice, and positioning as a premium-yet-accessible DTC lip care brand targeting Gen Z and Millennial consumers.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-icon">W</div>
+          <div class="role-card-title">Website Build</div>
+          <div class="role-card-text">Designed and built the full Citrion product website from scratch — including product pages, brand story, investor portal, and contact form. Built independently as the team's CMO.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-icon">S</div>
+          <div class="role-card-title">Go-to-Market Strategy</div>
+          <div class="role-card-text">Led the team's marketing strategy — including channel selection, target audience definition, and budget allocation across the simulation rounds. Results pending competition completion.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING STRATEGY — COMING SOON -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">Strategy</span>
+      <h2 class="sidebar-title">Marketing Strategy</h2>
+    </div>
+    <div class="section-body">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">→</div>
+        <div class="coming-soon-label">Coming Soon</div>
+        <div class="coming-soon-title">Full Strategy Breakdown</div>
+        <div class="coming-soon-text">Detailed breakdown of Citrion's go-to-market strategy, channel allocation, audience segmentation, and campaign decisions — to be added when the competition concludes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA ANALYSIS — COMING SOON -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">Analytics</span>
+      <h2 class="sidebar-title">Data Analysis</h2>
+    </div>
+    <div class="section-body">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">📊</div>
+        <div class="coming-soon-label">Coming Soon</div>
+        <div class="coming-soon-title">Simulation Performance Analysis</div>
+        <div class="coming-soon-text">Analysis of market share data, EBT growth, demand forecasting accuracy, and campaign ROI across all simulation rounds — to be published after competition results are released.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS — COMING SOON -->
+<section class="reveal">
+  <div class="two-col">
+    <div class="section-sidebar">
+      <span class="section-tag">Results</span>
+      <h2 class="sidebar-title">Competition Results</h2>
+    </div>
+    <div class="section-body">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">🏆</div>
+        <div class="coming-soon-label">Pending · April 2026</div>
+        <div class="coming-soon-title">Results Announced After Anaheim Finals</div>
+        <div class="coming-soon-text">The 2026 ICBSC competition culminates April 23–25 in Anaheim, CA. Final rankings, performance metrics, and key takeaways will be added here after the on-site intensive phase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <span class="footer-copy">© 2026 Keang Liu — MBA Candidate, UCR</span>
+  <button class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
