@@ -1,653 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keang Liu — MBA Candidate | Digital Marketing & Analytics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keang Liu — Digital Marketing & Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f6f6f4;
+    --ink: #0f0f0e;
+    --muted: #8a8a86;
+    --border: #e2e2de;
+    --yellow: #f5c800;
+    --blue: #1a56db;
+    --blue-bg: #eef2fd;
+  }
 
-    body {
-      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: #1a1a1a;
-      background-color: #fafaf9;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  html { scroll-behavior: smooth; }
 
-    .container {
-      max-width: 48rem;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 0;
-    }
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 56px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 19px; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-btn {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; background: var(--ink); color: #fff;
+    border: none; padding: 10px 24px; cursor: pointer; transition: background .2s;
+  }
+  .nav-btn:hover { background: var(--blue); }
 
-    .hero__content h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(2.75rem, 8vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: #111;
-      margin-bottom: 0.75rem;
-    }
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-rows: auto auto;
+    padding: 80px 56px 64px;
+    border-bottom: 1px solid var(--border);
+    min-height: 90vh;
+    justify-content: stretch;
+  }
+  .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 56px; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  .pulse-dot {
+    width: 8px; height: 8px; background: var(--yellow); border-radius: 50%;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
 
-    .hero__tagline {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: #525252;
-      letter-spacing: 0.01em;
-      margin-bottom: 2rem;
-    }
+  .hero-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(88px, 12vw, 148px);
+    line-height: 0.88; letter-spacing: -0.035em; color: var(--ink);
+  }
+  .hero-name .blue-italic { font-style: italic; color: var(--blue); }
 
-    .hero__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
+  .hero-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-top: 40px; border-top: 1px solid var(--border); gap: 48px;
+  }
+  .hero-bio {
+    font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 380px;
+  }
+  .hero-stats { display: flex; gap: 48px; flex-shrink: 0; }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px; line-height: 1; letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 10px; color: var(--muted); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 5px;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
-      cursor: pointer;
-      border: none;
-    }
+  /* ── MARQUEE ── */
+  .marquee {
+    background: var(--yellow);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden; padding: 16px 0;
+  }
+  .marquee-track {
+    display: inline-flex; white-space: nowrap;
+    animation: scroll 24s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-item {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink);
+    padding: 0 40px;
+    display: inline-flex; align-items: center; gap: 40px;
+  }
+  .marquee-item::after { content: '✦'; font-size: 7px; opacity: .5; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    .btn--primary {
-      background-color: #2d5a4a;
-      color: #fff;
-    }
+  /* ── SKILLS ── */
+  .skills-section {
+    display: grid; grid-template-columns: 240px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-sidebar {
+    padding: 64px 48px 64px 56px;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .section-tag {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .sidebar-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px; line-height: 1.05; letter-spacing: -0.025em;
+    margin-top: 20px;
+  }
+  .skills-cards { display: grid; grid-template-columns: repeat(3,1fr); }
+  .skill-card {
+    padding: 52px 36px; border-right: 1px solid var(--border);
+    transition: background .2s; cursor: default;
+  }
+  .skill-card:last-child { border-right: none; }
+  .skill-card:hover { background: var(--bg2); }
+  .skill-icon {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px; flex-shrink: 0;
+  }
+  .icon-y { background: var(--yellow); color: var(--ink); }
+  .icon-b { background: var(--blue-bg); color: var(--blue); }
+  .icon-k { background: var(--ink); color: #fff; }
+  .skill-card-title {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--ink); margin-bottom: 20px;
+  }
+  .skill-tag { display: block; font-size: 13px; color: var(--muted); line-height: 2.15; }
 
-    .btn--primary:hover {
-      background-color: #234a3c;
-      transform: translateY(-1px);
-    }
+  /* ── WORK ── */
+  .work-section { border-bottom: 1px solid var(--border); }
+  .work-header {
+    display: grid; grid-template-columns: 240px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .work-header-right {
+    padding: 64px 56px; display: flex; align-items: flex-end;
+  }
+  .work-desc { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 480px; }
 
-    .btn--secondary {
-      background-color: transparent;
-      color: #2d5a4a;
-      border: 2px solid #2d5a4a;
-    }
+  .project-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 200px 100px 56px;
+    align-items: center; gap: 20px;
+    padding: 0 56px 0 56px;
+    min-height: 84px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background .15s;
+    text-decoration: none; color: inherit;
+  }
+  .project-row:hover { background: var(--bg2); }
+  .project-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  .project-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 25px; letter-spacing: -0.01em; line-height: 1;
+    transition: color .2s;
+  }
+  .project-row:hover .project-title { color: var(--blue); }
+  .project-pill {
+    display: inline-block; font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 5px 10px;
+    border: 1px solid var(--border); color: var(--muted);
+    transition: border-color .2s, color .2s;
+    white-space: nowrap;
+  }
+  .project-row:hover .project-pill { border-color: var(--blue); color: var(--blue); }
+  .project-year { font-size: 12px; color: var(--muted); }
+  .project-arrow {
+    font-size: 20px; color: var(--muted); text-align: right;
+    transition: color .2s, transform .2s; display: inline-block;
+  }
+  .project-row:hover .project-arrow { color: var(--blue); transform: translate(3px,-3px); }
 
-    .btn--secondary:hover {
-      background-color: #2d5a4a;
-      color: #fff;
-      transform: translateY(-1px);
-    }
+  /* ── RESOURCE ── */
+  .resource-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .resource-left { padding: 88px 56px; border-right: 1px solid var(--border); }
+  .resource-badge {
+    display: inline-block; background: var(--yellow); color: var(--ink);
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 6px 13px; margin-bottom: 28px;
+  }
+  .resource-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px; line-height: 1.08; letter-spacing: -0.025em;
+    margin-bottom: 20px; max-width: 320px;
+  }
+  .resource-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.85;
+    max-width: 380px; margin-bottom: 36px;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 14px 26px;
+    cursor: pointer; border: none; transition: background .2s;
+    text-decoration: none;
+  }
+  .cta-btn:hover { background: var(--blue); }
+  .resource-right {
+    padding: 88px 56px; background: var(--bg2);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .resource-card-tag {
+    font-size: 10px; color: var(--muted); letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .resource-card-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px; letter-spacing: -0.015em; margin-bottom: 6px;
+  }
+  .resource-card-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+  .check-row {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 13px; color: var(--muted);
+    padding: 13px 0; border-top: 1px solid var(--border);
+  }
+  .check-box {
+    width: 19px; height: 19px; background: var(--yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: var(--ink); flex-shrink: 0;
+  }
 
-    /* Sections */
-    section {
-      padding: 4rem 0;
-      border-top: 1px solid #e7e5e4;
-    }
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 120px 56px; text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  .green-dot {
+    width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .contact-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(60px, 8.5vw, 112px);
+    line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 48px;
+  }
+  .contact-title .blue-italic { font-style: italic; color: var(--blue); }
+  .linkedin-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--blue); color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 14px 32px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: opacity .2s; margin-bottom: 48px;
+  }
+  .linkedin-btn:hover { opacity: .85; }
+  .contact-divider {
+    display: flex; align-items: center; gap: 20px;
+    max-width: 560px; margin: 0 auto 40px; color: var(--muted);
+  }
+  .contact-divider::before, .contact-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .contact-divider span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .contact-form {
+    max-width: 560px; margin: 0 auto; text-align: left;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .form-group input, .form-group textarea {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px; font-weight: 300; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 13px 16px; outline: none;
+    transition: border-color .2s; resize: vertical;
+    border-radius: 0;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #c0c0bb; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); }
+  .form-submit {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; background: var(--ink); color: #fff;
+    border: none; padding: 15px 32px; cursor: pointer;
+    transition: background .2s; align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--blue); }
 
-    .section__label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #737373;
-      margin-bottom: 0.5rem;
-    }
+  /* ── FOOTER ── */
+  footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 56px; border-top: 1px solid var(--border);
+  }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-top {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer; transition: color .2s;
+    background: none; border: none;
+  }
+  .footer-top:hover { color: var(--ink); }
 
-    .section__title {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 400;
-      color: #111;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Skills */
-    .skills-groups {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .skills-group h3 {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #404040;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.02em;
-    }
-
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 0.4rem 0.85rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #2d5a4a;
-      background-color: #e8f0ed;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .tag:hover {
-      background-color: #2d5a4a;
-      color: #fff;
-    }
-
-    /* Education */
-    .education-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .education-item {
-      padding: 1.25rem 1.5rem;
-      background-color: #fff;
-      border: 1px solid #e7e5e4;
-      border-radius: 8px;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .education-item:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      border-color: #d4d4d4;
-    }
-
-    .education-item__school {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #111;
-      margin-bottom: 0.25rem;
-    }
-
-    .education-item__degree {
-      font-size: 0.9375rem;
-      color: #404040;
-      margin-bottom: 0.35rem;
-    }
-
-    .education-item__meta {
-      font-size: 0.8125rem;
-      color: #737373;
-    }
-
-    /* Experience & Projects Cards */
-    .cards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .card {
-      padding: 1.5rem;
-      background-color: #fff;
-      border: 1px solid #e7e5e4;
-      border-radius: 8px;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      border-color: #d4d4d4;
-    }
-
-    .card__header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.25rem 1rem;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid #eaeaea;
-    }
-
-    .card__header-main {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.35rem 0.5rem;
-    }
-
-    .card__header-main .card__company::before {
-      content: '·';
-      margin-right: 0.5rem;
-      color: #a3a3a3;
-      font-weight: 400;
-    }
-
-    .card__title {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #111;
-    }
-
-    .card__company {
-      font-size: 0.9375rem;
-      color: #525252;
-    }
-
-    .card__date {
-      font-size: 0.8125rem;
-      color: #737373;
-      flex-shrink: 0;
-    }
-
-    .card__bullets {
-      list-style: none;
-      margin-bottom: 1rem;
-    }
-
-    .card__bullets li {
-      position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 0.4rem;
-      font-size: 0.9375rem;
-      color: #404040;
-      line-height: 1.5;
-    }
-
-    .card__bullets li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: #2d5a4a;
-      font-weight: 700;
-    }
-
-    .card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .card__tags .tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-    }
-
-    /* Contact Form */
-    .contact__subtitle {
-      font-size: 0.9375rem;
-      color: #525252;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-form {
-      max-width: 28rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #404040;
-      margin-bottom: 0.35rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.65rem 0.85rem;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      color: #111;
-      background-color: #fff;
-      border: 1px solid #d4d4d4;
-      border-radius: 6px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #2d5a4a;
-      box-shadow: 0 0 0 3px rgba(45, 90, 74, 0.12);
-    }
-
-    .form-group textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .contact-form .btn--primary {
-      margin-top: 0.25rem;
-    }
-
-    /* Free Resource teaser */
-    .free-resource {
-      background-color: #f8f9fa;
-      border-top-color: #e8e9ea;
-    }
-
-    .free-resource__teaser {
-      max-width: 32rem;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .free-resource__teaser .section__title {
-      margin-bottom: 0.5rem;
-    }
-
-    .free-resource__teaser-subhead {
-      font-size: 0.9375rem;
-      color: #525252;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-    }
-
-    /* Nav */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background-color: rgba(250, 250, 249, 0.95);
-      border-bottom: 1px solid #e7e5e4;
-      padding: 0.75rem 0;
-    }
-
-    .nav .container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem 1.25rem;
-    }
-
-    .nav__link {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #404040;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .nav__link:hover {
-      color: #2d5a4a;
-    }
-
-    /* Footer */
-    footer {
-      padding: 2rem 0 3rem;
-      text-align: center;
-      border-top: 1px solid #e7e5e4;
-    }
-
-    footer p {
-      font-size: 0.8125rem;
-      color: #737373;
-    }
-  </style>
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <a href="#skills" class="nav__link">View My Work</a>
-      <a href="free-resources.html" class="nav__link">Free Template</a>
-      <a href="#contact" class="nav__link">Get In Touch</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Keang Liu</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+  <button class="nav-btn">Get In Touch</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-eyebrow">
+      <span class="pulse-dot"></span>
+      MBA Candidate &nbsp;·&nbsp; UCR &nbsp;·&nbsp; Digital Marketing & Analytics
     </div>
-  </nav>
-  <main>
-    <header class="hero">
-      <div class="hero__content container">
-        <h1>Keang Liu</h1>
-        <p class="hero__tagline">MBA Candidate | Digital Marketing & Analytics</p>
-        <div class="hero__buttons">
-          <a href="#skills" class="btn btn--primary">View My Work</a>
-          <a href="#contact" class="btn btn--secondary">Get In Touch</a>
-        </div>
+    <h1 class="hero-name">
+      Keang<br>
+      <span class="blue-italic">Liu.</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-bio">Marketing strategist bridging data and creativity — turning campaign metrics into growth, and insights into real impact.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Exp.</div>
       </div>
-    </header>
-
-    <section id="skills" class="skills">
-      <div class="container">
-        <p class="section__label">Skills</p>
-        <h2 class="section__title">What I Do</h2>
-        <div class="skills-groups">
-          <div class="skills-group">
-            <h3>Marketing</h3>
-            <div class="skills-tags">
-              <span class="tag">Digital Marketing</span>
-              <span class="tag">SEO/SEM</span>
-              <span class="tag">HubSpot CRM</span>
-              <span class="tag">Google Analytics</span>
-              <span class="tag">Google Ads</span>
-              <span class="tag">Social Media Marketing</span>
-              <span class="tag">Content Strategy</span>
-            </div>
-          </div>
-          <div class="skills-group">
-            <h3>Analytics</h3>
-            <div class="skills-tags">
-              <span class="tag">SQL (in progress)</span>
-              <span class="tag">Excel & Pivot Tables</span>
-              <span class="tag">Demand Forecasting</span>
-              <span class="tag">Campaign Metrics</span>
-            </div>
-          </div>
-          <div class="skills-group">
-            <h3>Tools</h3>
-            <div class="skills-tags">
-              <span class="tag">Canva</span>
-              <span class="tag">Adobe Photoshop</span>
-              <span class="tag">Asana</span>
-              <span class="tag">PowerPoint</span>
-              <span class="tag">Google Workspace</span>
-            </div>
-          </div>
-        </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Projects</div>
       </div>
-    </section>
-
-    <section id="education" class="education">
-      <div class="container">
-        <p class="section__label">Background</p>
-        <h2 class="section__title">Education</h2>
-        <div class="education-list">
-          <div class="education-item">
-            <div class="education-item__school">University of California, Riverside</div>
-            <div class="education-item__degree">Master of Business Administration, Concentration: Marketing</div>
-            <div class="education-item__meta">GPA 3.7 | Expected June 2026</div>
-          </div>
-          <div class="education-item">
-            <div class="education-item__school">University of Illinois, Urbana-Champaign</div>
-            <div class="education-item__degree">Bachelor of Arts in Sociology</div>
-            <div class="education-item__meta">Graduated May 2023</div>
-          </div>
-        </div>
+      <div class="stat">
+        <div class="stat-num">3.7</div>
+        <div class="stat-label">GPA</div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="experience" class="experience">
-      <div class="container">
-        <p class="section__label">Work</p>
-        <h2 class="section__title">Experience</h2>
-        <div class="cards-list">
-          <article class="card">
-            <div class="card__header">
-              <div class="card__header-main">
-                <span class="card__title">Teaching Assistant</span>
-                <span class="card__company">UCR</span>
-              </div>
-              <span class="card__date">Sep 2025 – Jun 2026</span>
-            </div>
-            <ul class="card__bullets">
-              <li>Designed structured lectures for 100+ students using Google Slides.</li>
-              <li>Conducted LinkedIn resume workshops, improving average project grade by 8%.</li>
-            </ul>
-            <div class="card__tags">
-              <span class="tag">Google Slides</span>
-              <span class="tag">LinkedIn</span>
-              <span class="tag">Coaching</span>
-            </div>
-          </article>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">SEO / SEM</span>
+    <span class="marquee-item">Google Analytics</span>
+    <span class="marquee-item">HubSpot CRM</span>
+    <span class="marquee-item">Demand Forecasting</span>
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Campaign Strategy</span>
+    <span class="marquee-item">Data Analysis</span>
+    <span class="marquee-item">Google Ads</span>
+    <span class="marquee-item">Adobe Photoshop</span>
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">SEO / SEM</span>
+    <span class="marquee-item">Google Analytics</span>
+    <span class="marquee-item">HubSpot CRM</span>
+    <span class="marquee-item">Demand Forecasting</span>
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Campaign Strategy</span>
+    <span class="marquee-item">Data Analysis</span>
+    <span class="marquee-item">Google Ads</span>
+    <span class="marquee-item">Adobe Photoshop</span>
+  </div>
+</div>
 
-          <article class="card">
-            <div class="card__header">
-              <div class="card__header-main">
-                <span class="card__title">Administrative Assistant</span>
-                <span class="card__company">Amazing International Group</span>
-              </div>
-              <span class="card__date">Oct 2023 – Jun 2024</span>
-            </div>
-            <ul class="card__bullets">
-              <li>Ran HubSpot email outreach campaigns, boosting click rates by 12%.</li>
-              <li>Published weekly WeChat social content tracked via Google Analytics, increasing audience interaction by 15%.</li>
-            </ul>
-            <div class="card__tags">
-              <span class="tag">HubSpot</span>
-              <span class="tag">Google Analytics</span>
-              <span class="tag">WeChat</span>
-            </div>
-          </article>
+<!-- SKILLS -->
+<section class="skills-section reveal" id="skills">
+  <div class="section-sidebar">
+    <span class="section-tag">Capabilities</span>
+    <h2 class="sidebar-title">What<br>I Do</h2>
+  </div>
+  <div class="skills-cards">
+    <div class="skill-card">
+      <div class="skill-icon icon-y">M</div>
+      <div class="skill-card-title">Marketing</div>
+      <span class="skill-tag">Digital Marketing</span>
+      <span class="skill-tag">SEO / SEM</span>
+      <span class="skill-tag">HubSpot CRM</span>
+      <span class="skill-tag">Content Strategy</span>
+      <span class="skill-tag">Social Media</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon icon-b">A</div>
+      <div class="skill-card-title">Analytics</div>
+      <span class="skill-tag">Google Analytics</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Excel & Pivot Tables</span>
+      <span class="skill-tag">Demand Forecasting</span>
+      <span class="skill-tag">Campaign Metrics</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon icon-k">T</div>
+      <div class="skill-card-title">Tools</div>
+      <span class="skill-tag">Canva</span>
+      <span class="skill-tag">Adobe Photoshop</span>
+      <span class="skill-tag">Google Ads</span>
+      <span class="skill-tag">Asana</span>
+      <span class="skill-tag">PowerPoint</span>
+    </div>
+  </div>
+</section>
 
-          <article class="card">
-            <div class="card__header">
-              <div class="card__header-main">
-                <span class="card__title">Marketing Coordinator</span>
-                <span class="card__company">Laoniu Foundation</span>
-              </div>
-              <span class="card__date">May 2021 – Apr 2022</span>
-            </div>
-            <ul class="card__bullets">
-              <li>Created marketing visuals with Adobe Photoshop & Canva, growing social engagement by 17%.</li>
-              <li>Analyzed campaign metrics in Excel using pivot tables, improving CTR by 10%.</li>
-              <li>Grew audience reach by 14% via strategic Baidu News campaign timing.</li>
-            </ul>
-            <div class="card__tags">
-              <span class="tag">Canva</span>
-              <span class="tag">Adobe Photoshop</span>
-              <span class="tag">Excel</span>
-              <span class="tag">Baidu News</span>
-            </div>
-          </article>
+<!-- WORK -->
+<section class="work-section reveal" id="work">
+  <div class="work-header">
+    <div class="section-sidebar" style="border-bottom:none;">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="sidebar-title">Selected<br><em style="font-family:'Instrument Serif',serif">Work</em></h2>
+    </div>
+    <div class="work-header-right">
+      <p class="work-desc">A collection of marketing strategy, data analysis, and competition projects — each one a real problem solved with measurable results.</p>
+    </div>
+  </div>
+  <a class="project-row">
+    <span class="project-num">01</span>
+    <span class="project-title">ICBSC Market Strategy</span>
+    <span class="project-pill">Competition · Strategy</span>
+    <span class="project-year">2026</span>
+    <span class="project-arrow">↗</span>
+  </a>
+  <a class="project-row">
+    <span class="project-num">02</span>
+    <span class="project-title">HubSpot Email Campaign</span>
+    <span class="project-pill">Marketing · CRM</span>
+    <span class="project-year">2024</span>
+    <span class="project-arrow">↗</span>
+  </a>
+  <a class="project-row">
+    <span class="project-num">03</span>
+    <span class="project-title">Social Growth Analysis</span>
+    <span class="project-pill">Analytics · Data</span>
+    <span class="project-year">2024</span>
+    <span class="project-arrow">↗</span>
+  </a>
+  <a class="project-row">
+    <span class="project-num">04</span>
+    <span class="project-title">Baidu News Campaign</span>
+    <span class="project-pill">Digital Marketing</span>
+    <span class="project-year">2021</span>
+    <span class="project-arrow">↗</span>
+  </a>
+</section>
 
-          <article class="card">
-            <div class="card__header">
-              <div class="card__header-main">
-                <span class="card__title">Administrative Assistant</span>
-                <span class="card__company">China Mengniu Dairy</span>
-              </div>
-              <span class="card__date">Jun 2020 – Apr 2021</span>
-            </div>
-            <ul class="card__bullets">
-              <li>Tracked 5+ online promotional campaigns and managed timelines and deliverables.</li>
-              <li>Built competitor analysis pitch decks in Excel & PowerPoint.</li>
-            </ul>
-            <div class="card__tags">
-              <span class="tag">Excel</span>
-              <span class="tag">PowerPoint</span>
-              <span class="tag">Campaign Management</span>
-            </div>
-          </article>
-        </div>
+<!-- RESOURCE -->
+<section class="resource-section reveal" id="resources">
+  <div class="resource-left">
+    <div class="resource-badge">Free Download</div>
+    <h3 class="resource-title">Free Resume Template for New Grads</h3>
+    <p class="resource-desc">An ATS-friendly resume template built for marketing and business students — plus a job search checklist to guide your entire process.</p>
+    <a href="free-resources.html" class="cta-btn">Download Free Template &nbsp;→</a>
+  </div>
+  <div class="resource-right">
+    <div class="resource-card-tag">What's Included</div>
+    <div class="resource-card-title">Resume Kit</div>
+    <div class="resource-card-sub">v2.0 &nbsp;·&nbsp; Updated 2026</div>
+    <div class="check-row"><div class="check-box">✓</div>ATS-optimized resume template</div>
+    <div class="check-row"><div class="check-box">✓</div>Job search checklist</div>
+    <div class="check-row"><div class="check-box">✓</div>Cover letter guide</div>
+    <div class="check-row"><div class="check-box">✓</div>LinkedIn optimization tips</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contact">
+  <div class="contact-eyebrow">
+    <span class="green-dot"></span>
+    Available for full-time opportunities
+  </div>
+  <h2 class="contact-title">
+    Let's Work<br>
+    <span class="blue-italic">Together.</span>
+  </h2>
+
+  <a href="https://www.linkedin.com/in/keang-liu/" target="_blank" class="contact-btn linkedin-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Connect on LinkedIn
+  </a>
+
+  <div class="contact-divider">
+    <span>or send a message</span>
+  </div>
+
+  <form class="contact-form" action="https://formspree.io/f/mdawlaqa" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
       </div>
-    </section>
-
-    <section id="projects" class="projects">
-      <div class="container">
-        <p class="section__label">Achievements</p>
-        <h2 class="section__title">Projects & Competitions</h2>
-        <div class="cards-list">
-          <article class="card">
-            <div class="card__header">
-              <div class="card__header-main">
-                <span class="card__title">International Collegiate Business Strategy Competition (ICBSC)</span>
-                <span class="card__company">CMO</span>
-              </div>
-              <span class="card__date">April 2026</span>
-            </div>
-            <ul class="card__bullets">
-              <li>Executed market penetration strategy using customer preference data, growing Area 3 market share from 25% to 33.4%.</li>
-              <li>Optimized multi-regional ad budgets via demand forecasting, driving 79% EBT growth within one year.</li>
-            </ul>
-            <div class="card__tags">
-              <span class="tag">Strategy</span>
-              <span class="tag">Market Analysis</span>
-              <span class="tag">Budget Optimization</span>
-            </div>
-          </article>
-        </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
       </div>
-    </section>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+    </div>
+    <button type="submit" class="form-submit">Send Message &nbsp;→</button>
+  </form>
+</section>
 
-    <section id="free-resource" class="free-resource">
-      <div class="container">
-        <p class="section__label">FREE DOWNLOAD</p>
-        <div class="free-resource__teaser">
-          <h2 class="section__title">Free Resume Template for Marketing Students</h2>
-          <p class="free-resource__teaser-subhead">Get a free ATS-friendly resume template + job search checklist</p>
-          <a href="free-resources.html" class="btn btn--primary">Get Free Template</a>
-        </div>
-      </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Keang Liu — MBA Candidate, UCR</span>
+  <button class="footer-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+</footer>
 
-    <section id="contact" class="contact">
-      <div class="container">
-        <p class="section__label">Contact</p>
-        <h2 class="section__title">Get In Touch</h2>
-        <p class="contact__subtitle">Have a question or opportunity? Leave a message below.</p>
-        <form class="contact-form" action="https://formspree.io/f/mzdjzgne" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required placeholder="Your message"></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary">Submit</button>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <p>© 2026 Keang Liu</p>
-      </div>
-    </footer>
-  </main>
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
