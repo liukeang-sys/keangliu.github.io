@@ -9,41 +9,114 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --bg: #ffffff; --bg2: #f6f6f4; --ink: #0f0f0e;
-    --muted: #8a8a86; --border: #e2e2de; --yellow: #f5c800;
-    --blue: #1a56db; --blue-bg: #eef2fd;
+    --bg: #ffffff; --bg2: #f6f6f4; --ink: #0f0f0e; --muted: #8a8a86;
+    --border: #e2e2de; --yellow: #f5c800; --blue: #1a56db; --blue-bg: #eef2fd;
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; }
-  nav {
-    position: sticky; top: 0; z-index: 200;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 56px; background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
-  }
+  body { background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 20px 56px; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: 'Instrument Serif', serif; font-size: 19px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--ink); }
-  .nav-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: #fff; border: none; padding: 10px 24px; cursor: pointer; transition: background .2s; text-decoration: none; }
+  .nav-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: #fff; border: none; padding: 10px 24px; cursor: pointer; transition: background .2s; text-decoration: none; display: inline-block; }
   .nav-btn:hover { background: var(--blue); }
-  .coming-soon {
-    min-height: calc(100vh - 65px);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 80px 56px;
-    border-bottom: 1px solid var(--border);
-  }
-  .cs-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 24px; }
-  .cs-title { font-family: 'Instrument Serif', serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 24px; }
-  .cs-title .blue-italic { font-style: italic; color: var(--blue); }
-  .cs-sub { font-size: 15px; color: var(--muted); max-width: 400px; line-height: 1.8; margin-bottom: 40px; }
-  .back-btn { font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 13px 28px; text-decoration: none; transition: background .2s; }
-  .back-btn:hover { background: var(--blue); }
+
+  /* PAGE HEADER */
+  .page-header { padding: 80px 56px 64px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+  .page-header-left {}
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; margin-bottom: 32px; transition: color .2s; }
+  .back-link:hover { color: var(--ink); }
+  .page-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-title { font-family: 'Instrument Serif', serif; font-size: clamp(48px, 6vw, 80px); line-height: 0.95; letter-spacing: -0.03em; }
+  .page-title em { font-style: italic; color: var(--blue); }
+  .page-desc { font-size: 15px; color: var(--muted); line-height: 1.8; }
+
+  /* CASE STUDY CARD */
+  .cases-list { border-bottom: 1px solid var(--border); }
+  .case-card { border-bottom: 1px solid var(--border); }
+  .case-card:last-child { border-bottom: none; }
+
+  /* CARD HEADER — clickable to expand */
+  .case-header { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 32px; padding: 40px 56px; cursor: pointer; transition: background .15s; }
+  .case-header:hover { background: var(--bg2); }
+  .case-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  .case-header-main {}
+  .case-tag { display: inline-block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); margin-bottom: 10px; }
+  .case-name { font-family: 'Instrument Serif', serif; font-size: 28px; letter-spacing: -0.01em; line-height: 1; }
+  .case-toggle { font-size: 22px; color: var(--muted); transition: transform .3s, color .2s; flex-shrink: 0; }
+  .case-card.open .case-toggle { transform: rotate(45deg); color: var(--blue); }
+  .case-card.open .case-name { color: var(--blue); }
+
+  /* CARD BODY */
+  .case-body { display: none; padding: 0 56px 64px; }
+  .case-card.open .case-body { display: block; }
+
+  .case-overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 56px; border: 1px solid var(--border); }
+  .overview-stat { padding: 28px 24px; border-right: 1px solid var(--border); background: var(--bg2); }
+  .overview-stat:last-child { border-right: none; }
+  .overview-label { font-size: 10px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .overview-val { font-family: 'Instrument Serif', serif; font-size: 32px; letter-spacing: -0.02em; color: var(--ink); line-height: 1; }
+  .overview-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .case-section { margin-bottom: 48px; }
+  .case-section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+  /* COMPARISON TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); background: var(--bg2); }
+  .compare-table th:first-child { width: 200px; }
+  .compare-table td { font-size: 13px; padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; line-height: 1.5; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: var(--bg2); }
+  .winner { color: var(--blue); font-weight: 500; }
+  .badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 2px; }
+  .badge-blue { background: var(--blue-bg); color: var(--blue); }
+  .badge-yellow { background: var(--yellow); color: var(--ink); }
+  .badge-gray { background: var(--bg2); color: var(--muted); border: 1px solid var(--border); }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; flex-direction: column; gap: 16px; }
+  .bar-row { display: grid; grid-template-columns: 160px 1fr 80px; align-items: center; gap: 16px; }
+  .bar-label { font-size: 13px; color: var(--ink); }
+  .bar-track { height: 8px; background: var(--bg2); border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; transition: width 1s ease; }
+  .bar-fill-blue { background: var(--blue); }
+  .bar-fill-yellow { background: var(--yellow); }
+  .bar-fill-ink { background: var(--ink); }
+  .bar-val { font-size: 12px; color: var(--muted); text-align: right; font-family: 'Instrument Serif', serif; font-size: 15px; }
+
+  /* INSIGHTS */
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .insight-card { background: var(--bg2); padding: 28px 24px; border: 1px solid var(--border); }
+  .insight-icon { width: 28px; height: 28px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .insight-title { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+  .insight-text { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* RECOMMENDATIONS */
+  .rec-list { display: flex; flex-direction: column; gap: 0; }
+  .rec-item { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-num { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--blue); line-height: 1; }
+  .rec-text { font-size: 14px; color: var(--ink); line-height: 1.7; padding-top: 4px; }
+  .rec-text strong { font-weight: 500; }
+
+  /* FOOTER */
   footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 56px; border-top: 1px solid var(--border); }
   .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: color .2s; background: none; border: none; }
+  .footer-back:hover { color: var(--ink); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Keang Liu</a>
   <ul class="nav-links">
@@ -54,15 +127,311 @@
   <a href="index.html#contact" class="nav-btn">Get In Touch</a>
 </nav>
 
-<section class="coming-soon">
-  <div class="cs-tag">Marketing · Analytics</div>
-  <h1 class="cs-title">Case<br><span class="blue-italic">Studies</span></h1>
-  <p class="cs-sub">This page is coming soon. Check back later for in-depth marketing and analytics case studies.</p>
-  <a href="index.html" class="back-btn">← Back to Portfolio</a>
-</section>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-left">
+    <a href="index.html#work" class="back-link">← Back to Projects</a>
+    <div class="page-tag">Case Studies</div>
+    <h1 class="page-title">SEO &amp; SEM<br><em>Analysis</em></h1>
+  </div>
+  <div class="page-header-right">
+    <p class="page-desc">Deep-dive competitive analysis of digital marketing strategies across industries — examining keyword positioning, paid search tactics, content strategy, and traffic acquisition to surface actionable insights.</p>
+  </div>
+</div>
 
+<!-- CASE STUDIES LIST -->
+<div class="cases-list">
+
+  <!-- CASE 01 -->
+  <div class="case-card" id="case1">
+    <div class="case-header" onclick="toggleCase('case1')">
+      <span class="case-num">01</span>
+      <div class="case-header-main">
+        <div class="case-tag">SEO · SEM · Competitive Analysis</div>
+        <div class="case-name">Online Learning Platforms: Coursera vs Udemy vs LinkedIn Learning</div>
+      </div>
+      <span class="case-toggle">+</span>
+    </div>
+
+    <div class="case-body">
+
+      <!-- OVERVIEW STATS -->
+      <div class="case-overview reveal">
+        <div class="overview-stat">
+          <div class="overview-label">Platforms Analyzed</div>
+          <div class="overview-val">3</div>
+          <div class="overview-sub">Coursera · Udemy · LinkedIn Learning</div>
+        </div>
+        <div class="overview-stat">
+          <div class="overview-label">Market Leader (Traffic)</div>
+          <div class="overview-val">Udemy</div>
+          <div class="overview-sub">Largest monthly visitor base</div>
+        </div>
+        <div class="overview-stat">
+          <div class="overview-label">SEO Winner</div>
+          <div class="overview-val">Coursera</div>
+          <div class="overview-sub">Strongest organic keyword authority</div>
+        </div>
+      </div>
+
+      <!-- TRAFFIC & POSITIONING -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Traffic Source Breakdown</div>
+        <div class="bar-chart">
+          <div>
+            <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;margin-bottom:12px;color:var(--muted);text-transform:uppercase">Coursera — Organic Search dominates</div>
+            <div class="bar-row"><span class="bar-label">Organic Search</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:58%"></div></div><span class="bar-val">58%</span></div>
+            <div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:28%;opacity:.4"></div></div><span class="bar-val">28%</span></div>
+            <div class="bar-row"><span class="bar-label">Paid Search</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:7%;opacity:.3"></div></div><span class="bar-val">7%</span></div>
+            <div class="bar-row"><span class="bar-label">Social</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:4%;opacity:.2"></div></div><span class="bar-val">4%</span></div>
+          </div>
+          <div style="margin-top:24px">
+            <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;margin-bottom:12px;color:var(--muted);text-transform:uppercase">Udemy — Direct traffic leads (brand loyalty)</div>
+            <div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill bar-fill-yellow" style="width:68%"></div></div><span class="bar-val">68%</span></div>
+            <div class="bar-row"><span class="bar-label">Organic Search</span><div class="bar-track"><div class="bar-fill bar-fill-yellow" style="width:18%;opacity:.6"></div></div><span class="bar-val">18%</span></div>
+            <div class="bar-row"><span class="bar-label">Paid Search</span><div class="bar-track"><div class="bar-fill bar-fill-yellow" style="width:8%;opacity:.4"></div></div><span class="bar-val">8%</span></div>
+            <div class="bar-row"><span class="bar-label">Social</span><div class="bar-track"><div class="bar-fill bar-fill-yellow" style="width:5%;opacity:.3"></div></div><span class="bar-val">5%</span></div>
+          </div>
+          <div style="margin-top:24px">
+            <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;margin-bottom:12px;color:var(--muted);text-transform:uppercase">LinkedIn Learning — Backed by LinkedIn ecosystem</div>
+            <div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:52%"></div></div><span class="bar-val">52%</span></div>
+            <div class="bar-row"><span class="bar-label">Organic Search</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:24%;opacity:.5"></div></div><span class="bar-val">24%</span></div>
+            <div class="bar-row"><span class="bar-label">Social (LinkedIn)</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:14%;opacity:.4"></div></div><span class="bar-val">14%</span></div>
+            <div class="bar-row"><span class="bar-label">Paid Search</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:7%;opacity:.3"></div></div><span class="bar-val">7%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEYWORD POSITIONING -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Keyword Strategy Comparison</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Keyword Type</th>
+              <th>Coursera</th>
+              <th>Udemy</th>
+              <th>LinkedIn Learning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brand keywords</td>
+              <td><span class="badge badge-blue">Strong</span></td>
+              <td><span class="badge badge-blue">Strong</span></td>
+              <td><span class="badge badge-blue">Strong</span></td>
+            </tr>
+            <tr>
+              <td>High-intent ("learn Python online")</td>
+              <td class="winner">Dominant — university credibility</td>
+              <td>Competitive — price-driven CTAs</td>
+              <td>Moderate — corporate angle</td>
+            </tr>
+            <tr>
+              <td>Certification keywords</td>
+              <td class="winner">Top ranked — Google, IBM certs</td>
+              <td>Limited — no accredited certs</td>
+              <td>Growing — Microsoft backing</td>
+            </tr>
+            <tr>
+              <td>Long-tail course queries</td>
+              <td>Moderate</td>
+              <td class="winner">Dominant — 200,000+ course pages</td>
+              <td>Limited catalog</td>
+            </tr>
+            <tr>
+              <td>Career transition keywords</td>
+              <td><span class="badge badge-blue">Strong</span></td>
+              <td><span class="badge badge-gray">Weak</span></td>
+              <td><span class="badge badge-blue">Strong</span></td>
+            </tr>
+            <tr>
+              <td>Paid search (Google Ads)</td>
+              <td>Moderate spend, cert-focused</td>
+              <td class="winner">Highest spend — discount CTAs</td>
+              <td>Low — relies on LinkedIn ecosystem</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- AD STRATEGY -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Paid Search Strategy Analysis</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Coursera</th>
+              <th>Udemy</th>
+              <th>LinkedIn Learning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ad messaging focus</td>
+              <td>Credentials & career outcomes<br><span style="font-size:12px;color:var(--muted)">"Earn a Google certificate"</span></td>
+              <td>Price & urgency<br><span style="font-size:12px;color:var(--muted)">"Courses from $9.99 today"</span></td>
+              <td>Professional development<br><span style="font-size:12px;color:var(--muted)">"Learn with LinkedIn"</span></td>
+            </tr>
+            <tr>
+              <td>Target audience (SEM)</td>
+              <td>Career changers, degree seekers</td>
+              <td>Bargain hunters, skill upgraders</td>
+              <td>Corporate learners, B2B buyers</td>
+            </tr>
+            <tr>
+              <td>Landing page strategy</td>
+              <td>Course catalog + certificate CTA</td>
+              <td class="winner">Aggressive discount countdown</td>
+              <td>Free trial push</td>
+            </tr>
+            <tr>
+              <td>Retargeting</td>
+              <td>Course-specific ads</td>
+              <td class="winner">Heavy — frequent discount reminders</td>
+              <td>Moderate — subscription push</td>
+            </tr>
+            <tr>
+              <td>Paid-to-organic ratio</td>
+              <td>30 / 70 (organic-heavy)</td>
+              <td>45 / 55</td>
+              <td><span class="badge badge-gray">20 / 80 (ecosystem-reliant)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CONTENT STRATEGY -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Content Strategy Comparison</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Content Type</th>
+              <th>Coursera</th>
+              <th>Udemy</th>
+              <th>LinkedIn Learning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Blog / SEO content</td>
+              <td class="winner">High volume — career guides, industry reports</td>
+              <td>Moderate — course landing pages as SEO</td>
+              <td>Low — relies on LinkedIn articles</td>
+            </tr>
+            <tr>
+              <td>Social proof</td>
+              <td>University partner logos, learner outcomes</td>
+              <td>Star ratings, student counts per course</td>
+              <td class="winner">LinkedIn profile integration</td>
+            </tr>
+            <tr>
+              <td>Video content (YouTube)</td>
+              <td class="winner">Strong — course previews + career content</td>
+              <td>Moderate — instructor previews</td>
+              <td>Moderate</td>
+            </tr>
+            <tr>
+              <td>Email marketing</td>
+              <td>Course recommendations, deadlines</td>
+              <td class="winner">Aggressive flash-sale emails</td>
+              <td>Skill path suggestions</td>
+            </tr>
+            <tr>
+              <td>Unique SEO moat</td>
+              <td class="winner">University brand authority</td>
+              <td>Scale — millions of indexed course pages</td>
+              <td>LinkedIn platform integration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KEY INSIGHTS -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Key Insights</div>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon">1</div>
+            <div class="insight-title">Coursera wins on organic authority</div>
+            <div class="insight-text">University partnerships create unbeatable domain authority. 58% of traffic from organic search shows a mature SEO moat that competitors struggle to replicate without institutional backing.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">2</div>
+            <div class="insight-title">Udemy's scale is its SEO weapon</div>
+            <div class="insight-text">200,000+ course pages create millions of long-tail keyword entry points. Even without certificate credibility, sheer catalog volume captures bottom-of-funnel search intent at scale.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">3</div>
+            <div class="insight-title">LinkedIn Learning underinvests in SEO</div>
+            <div class="insight-text">Heavy reliance on the LinkedIn ecosystem (52% direct traffic) masks an SEO vulnerability. Without Microsoft's platform, organic discoverability is weak compared to competitors.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">4</div>
+            <div class="insight-title">Paid search reveals brand positioning</div>
+            <div class="insight-text">Ad copy tells the whole story: Coursera sells outcomes, Udemy sells price, LinkedIn Learning sells professional identity. Each SEM strategy directly mirrors its core value proposition.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Strategic Recommendations</div>
+        <div class="rec-list">
+          <div class="rec-item">
+            <span class="rec-num">1</span>
+            <div class="rec-text"><strong>For Udemy:</strong> Invest in long-form SEO content (career guides, industry reports) to capture higher-intent queries currently dominated by Coursera. Price-only positioning leaves top-of-funnel organic traffic on the table.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">2</span>
+            <div class="rec-text"><strong>For LinkedIn Learning:</strong> Build a standalone SEO content strategy independent of the LinkedIn platform. Current organic share (~24%) is too low for a product at this price point — career transition content could close the gap.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">3</span>
+            <div class="rec-text"><strong>For Coursera:</strong> Double down on paid search for professional certificate keywords — the ROI on converting high-intent learners to $49/month subscriptions is stronger than any competitor's paid funnel.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">4</span>
+            <div class="rec-text"><strong>Opportunity for all three:</strong> AI-skill search queries ("learn ChatGPT," "AI for business") are high-growth and still contested. The platform that builds SEO authority here first will own a fast-growing acquisition channel.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /case-body -->
+  </div><!-- /case-card -->
+
+</div><!-- /cases-list -->
+
+<!-- FOOTER -->
 <footer>
   <span class="footer-copy">© 2026 Keang Liu — MBA Candidate, UCR</span>
+  <button class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
 </footer>
+
+<script>
+  function toggleCase(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+    // animate bars on open
+    if (card.classList.contains('open')) {
+      setTimeout(() => {
+        card.querySelectorAll('.bar-fill').forEach(b => {
+          const w = b.style.width;
+          b.style.width = '0';
+          requestAnimationFrame(() => { b.style.width = w; });
+        });
+        card.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      }, 50);
+    }
+  }
+
+  // Scroll reveal for non-card elements
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
