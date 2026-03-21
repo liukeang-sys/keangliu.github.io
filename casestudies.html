@@ -402,6 +402,222 @@
     </div><!-- /case-body -->
   </div><!-- /case-card -->
 
+
+  <!-- CASE 02 -->
+  <div class="case-card" id="case2">
+    <div class="case-header" onclick="toggleCase('case2')">
+      <span class="case-num">02</span>
+      <div class="case-header-main">
+        <div class="case-tag">CRO · UX · Landing Page Analysis</div>
+        <div class="case-name">Airbnb vs Booking.com: Landing Page & Conversion Rate Optimization</div>
+      </div>
+      <span class="case-toggle">+</span>
+    </div>
+
+    <div class="case-body">
+
+      <!-- OVERVIEW -->
+      <div class="case-overview reveal">
+        <div class="overview-stat">
+          <div class="overview-label">Platforms Analyzed</div>
+          <div class="overview-val">2</div>
+          <div class="overview-sub">Airbnb · Booking.com</div>
+        </div>
+        <div class="overview-stat">
+          <div class="overview-label">Airbnb Avg. Booking Rate</div>
+          <div class="overview-val">1–3%</div>
+          <div class="overview-sub">Of listing views → confirmed stays</div>
+        </div>
+        <div class="overview-stat">
+          <div class="overview-label">CRO Philosophy</div>
+          <div class="overview-val">Emotion vs Urgency</div>
+          <div class="overview-sub">Airbnb: story-driven · Booking: friction-free</div>
+        </div>
+      </div>
+
+      <!-- CONVERSION FUNNEL -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Conversion Funnel Comparison</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <!-- Airbnb funnel -->
+          <div style="background:var(--bg2);padding:28px 24px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Airbnb</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:var(--blue);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Homepage / Search</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--blue);margin:0 auto;"></div>
+              <div style="background:rgba(26,86,219,0.75);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Category Browse (Tiny Homes, Beachfront…)</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.75);margin:0 auto;"></div>
+              <div style="background:rgba(26,86,219,0.55);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Listing Page (photos, host story, reviews)</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.55);margin:0 auto;"></div>
+              <div style="background:rgba(26,86,219,0.35);color:var(--ink);padding:12px 16px;font-size:13px;text-align:center;">Date & Guest Selection</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.35);margin:0 auto;"></div>
+              <div style="background:var(--yellow);color:var(--ink);padding:12px 16px;font-size:13px;font-weight:500;text-align:center;">Reserve / Book → Confirmed</div>
+            </div>
+            <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Emotional journey first. Users browse categories and listings before committing. Trust built through host profiles, reviews, and Superhost badges.</div>
+          </div>
+          <!-- Booking.com funnel -->
+          <div style="background:var(--bg2);padding:28px 24px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Booking.com</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:var(--ink);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Homepage (Search bar is the hero)</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--ink);margin:0 auto;"></div>
+              <div style="background:rgba(15,15,14,0.75);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Search Results (filters, map, sorted list)</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.75);margin:0 auto;"></div>
+              <div style="background:rgba(15,15,14,0.55);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Property Page (urgency signals, price)</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.55);margin:0 auto;"></div>
+              <div style="background:rgba(15,15,14,0.35);color:var(--ink);padding:12px 16px;font-size:13px;text-align:center;">Room Selection + Price Breakdown</div>
+              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.35);margin:0 auto;"></div>
+              <div style="background:var(--yellow);color:var(--ink);padding:12px 16px;font-size:13px;font-weight:500;text-align:center;">Reserve Now, Pay Later → Confirmed</div>
+            </div>
+            <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Task-completion first. Designed for speed and decision confidence. Urgency cues ("Only 2 left!") and flexible cancellation reduce booking hesitation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANDING PAGE UX -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Landing Page UX Analysis</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>UX Element</th>
+              <th>Airbnb</th>
+              <th>Booking.com</th>
+              <th>CRO Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hero / Above-the-fold</td>
+              <td>Inspirational full-bleed photography + category chips ("Tiny Homes", "Beachfront")</td>
+              <td class="winner">Single-minded search bar — destination, dates, guests</td>
+              <td>Booking's focus reduces decision paralysis; Airbnb encourages discovery browsing</td>
+            </tr>
+            <tr>
+              <td>Search entry point</td>
+              <td>Flexible — search or browse categories</td>
+              <td class="winner">Mandatory — must enter destination to proceed</td>
+              <td>Booking.com's forced intent filter means higher-quality leads enter the funnel</td>
+            </tr>
+            <tr>
+              <td>Visual hierarchy</td>
+              <td class="winner">Z-pattern layout drives eye to single CTA; card layer contrast focuses attention</td>
+              <td>Functional grid — sorted results, density of info</td>
+              <td>Airbnb's visual clarity reduces cognitive load at the search stage</td>
+            </tr>
+            <tr>
+              <td>Urgency signals</td>
+              <td>Subtle — "Rare find" badge, limited availability nudge</td>
+              <td class="winner">Aggressive — "Only 2 rooms left", "Booked 12 times today", countdown timers</td>
+              <td>Booking.com's urgency directly lifts conversion by triggering FOMO at point of decision</td>
+            </tr>
+            <tr>
+              <td>Pricing transparency</td>
+              <td>Hidden fees revealed late (cleaning, service) — major friction point</td>
+              <td class="winner">Total price shown early including taxes — fewer checkout surprises</td>
+              <td>Late fee reveal is Airbnb's #1 conversion killer; Booking.com's transparency reduces abandonment</td>
+            </tr>
+            <tr>
+              <td>Cancellation policy</td>
+              <td>Varied by host — now adding 24hr free cancellation (copying Booking)</td>
+              <td class="winner">Prominent "Free cancellation" badge on most listings</td>
+              <td>Flexible cancellation is proven to increase booking rate by removing commitment fear</td>
+            </tr>
+            <tr>
+              <td>Mobile UX</td>
+              <td class="winner">Award-winning app — seamless photo browsing, swipe gestures</td>
+              <td>Functional, dense — great for quick bookings, less inspiring</td>
+              <td>Airbnb wins on engagement; Booking.com wins on mobile conversion speed</td>
+            </tr>
+            <tr>
+              <td>Trust signals</td>
+              <td class="winner">2-way review system, Superhost badge, verified ID, host response rate</td>
+              <td>Guest reviews, property ratings, Genius loyalty badge</td>
+              <td>Airbnb's peer-trust model addresses the unique psychological barrier of staying with strangers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TRUST & SOCIAL PROOF -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Trust Architecture & Social Proof Strategy</div>
+        <div class="bar-chart">
+          <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;margin-bottom:16px;color:var(--muted);text-transform:uppercase">Trust signal strength by category (estimated relative impact on conversion)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+            <div>
+              <div style="font-size:12px;font-weight:500;margin-bottom:12px;">Airbnb</div>
+              <div class="bar-row"><span class="bar-label">Peer reviews</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:90%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Host profiles</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:85%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Verified ID</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:75%"></div></div><span class="bar-val">Med-High</span></div>
+              <div class="bar-row"><span class="bar-label">Urgency cues</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:35%"></div></div><span class="bar-val">Low</span></div>
+              <div class="bar-row"><span class="bar-label">Price clarity</span><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:30%"></div></div><span class="bar-val">Low</span></div>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:500;margin-bottom:12px;">Booking.com</div>
+              <div class="bar-row"><span class="bar-label">Guest reviews</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:82%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Price transparency</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:88%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Free cancellation</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:90%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Urgency cues</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:85%"></div></div><span class="bar-val">High</span></div>
+              <div class="bar-row"><span class="bar-label">Loyalty (Genius)</span><div class="bar-track"><div class="bar-fill bar-fill-ink" style="width:70%"></div></div><span class="bar-val">Med-High</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY INSIGHTS -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Key CRO Insights</div>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon">1</div>
+            <div class="insight-title">Emotion converts differently than urgency</div>
+            <div class="insight-text">Airbnb's design converts through aspiration and belonging. Booking.com converts through urgency and efficiency. Both work — but for different user intents. Leisure travelers browse; business travelers decide fast.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">2</div>
+            <div class="insight-title">Hidden fees are Airbnb's biggest CRO weakness</div>
+            <div class="insight-text">Research consistently shows late price reveals are the #1 cause of booking abandonment. Airbnb's cleaning and service fees surfacing at checkout create a "price shock" that drives users back to Booking.com.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">3</div>
+            <div class="insight-title">Airbnb is adopting Booking's CRO playbook</div>
+            <div class="insight-text">Airbnb's 2025 updates — 24hr free cancellation, Reserve Now Pay Later, flexible search carousels — directly mirror Booking's proven tactics. This shows Booking.com's data-driven CRO approach is winning at the platform level.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">4</div>
+            <div class="insight-title">Sticky CTAs and above-fold placement matter</div>
+            <div class="insight-text">CRO research shows placing a CTA above the fold increases engagement, and making it sticky on mobile drives measurable checkout completion gains. Both platforms apply this — but Airbnb's visual hierarchy executes it more elegantly.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Strategic CRO Recommendations</div>
+        <div class="rec-list">
+          <div class="rec-item">
+            <span class="rec-num">1</span>
+            <div class="rec-text"><strong>Airbnb — Fix the fee reveal:</strong> Show total price (including cleaning fees and service charges) on the search results card, not at checkout. This single change would reduce the biggest drop-off point in the booking funnel and close the conversion gap with Booking.com.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">2</span>
+            <div class="rec-text"><strong>Airbnb — Expand free cancellation prominently:</strong> Surface the 24hr cancellation policy as a visible badge on listing cards — not buried in fine print. Booking.com proves this badge directly lifts booking rates by removing the commitment barrier.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">3</span>
+            <div class="rec-text"><strong>Booking.com — Invest in emotional storytelling:</strong> The functional UX wins on conversion speed but loses on brand loyalty. Adding host/property narrative elements to listing pages could increase engagement time and repeat bookings — especially for unique or boutique stays.</div>
+          </div>
+          <div class="rec-item">
+            <span class="rec-num">4</span>
+            <div class="rec-text"><strong>Both platforms — Mobile-first A/B testing:</strong> The majority of travel research now happens on mobile. Both platforms should run continuous A/B tests on mobile CTA placement, form auto-fill, and payment flow simplification — where even small UX improvements compound into significant conversion gains at scale.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /case-body -->
+  </div><!-- /case-card -->
+
 </div><!-- /cases-list -->
 
 <!-- FOOTER -->
