@@ -416,61 +416,118 @@
 
     <div class="case-body">
 
-      <!-- OVERVIEW -->
+      <!-- METHODOLOGY NOTE -->
+      <div style="background:var(--blue-bg);border:1px solid rgba(26,86,219,0.2);padding:20px 24px;margin-bottom:40px;display:flex;gap:16px;align-items:start;">
+        <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);flex-shrink:0;padding-top:2px;">Research Note</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.75;">Traffic data sourced directly from SimilarWeb (Feb 2026). UX observations based on firsthand walkthrough of both platforms — searching Los Angeles, same dates, 2 guests — and documenting friction points at each funnel stage.</div>
+      </div>
+
+      <!-- OVERVIEW with real data -->
       <div class="case-overview reveal">
         <div class="overview-stat">
-          <div class="overview-label">Platforms Analyzed</div>
-          <div class="overview-val">2</div>
-          <div class="overview-sub">Airbnb · Booking.com</div>
+          <div class="overview-label">Booking.com Traffic Advantage</div>
+          <div class="overview-val">5.5×</div>
+          <div class="overview-sub">523.3M vs 95.1M monthly visits (Feb 2026)</div>
         </div>
         <div class="overview-stat">
-          <div class="overview-label">Airbnb Avg. Booking Rate</div>
-          <div class="overview-val">1–3%</div>
-          <div class="overview-sub">Of listing views → confirmed stays</div>
+          <div class="overview-label">Bounce Rate Gap</div>
+          <div class="overview-val">4.1 pts</div>
+          <div class="overview-sub">Booking 26.11% vs Airbnb 30.23%</div>
         </div>
         <div class="overview-stat">
-          <div class="overview-label">CRO Philosophy</div>
-          <div class="overview-val">Emotion vs Urgency</div>
-          <div class="overview-sub">Airbnb: story-driven · Booking: friction-free</div>
+          <div class="overview-label">Pages / Visit Gap</div>
+          <div class="overview-val">14.96 vs 7.99</div>
+          <div class="overview-sub">Airbnb users browse nearly 2× more pages</div>
         </div>
       </div>
 
-      <!-- CONVERSION FUNNEL -->
+      <!-- REAL DATA COMPARISON -->
       <div class="case-section reveal">
-        <div class="case-section-title">Conversion Funnel Comparison</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
-          <!-- Airbnb funnel -->
+        <div class="case-section-title">SimilarWeb Data — Feb 2026</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Airbnb</th>
+              <th>Booking.com</th>
+              <th>What This Tells Us</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly Visits</td>
+              <td>95.09M</td>
+              <td class="winner">523.3M</td>
+              <td>Booking has 5.5× the traffic — global hotel inventory vs. short-term rentals</td>
+            </tr>
+            <tr>
+              <td>Bounce Rate</td>
+              <td>30.23%</td>
+              <td class="winner">26.11%</td>
+              <td>Booking retains more visitors — forced search intent reduces idle browsing</td>
+            </tr>
+            <tr>
+              <td>Visit Duration</td>
+              <td>6m 56s</td>
+              <td class="winner">7m 35s</td>
+              <td>Both strong, but Booking users spend more time — deeper room comparison</td>
+            </tr>
+            <tr>
+              <td>Pages / Visit</td>
+              <td class="winner">14.96</td>
+              <td>7.99</td>
+              <td>Airbnb users browse nearly 2× more pages — scroll-driven discovery vs. task completion</td>
+            </tr>
+            <tr>
+              <td>Direct Traffic</td>
+              <td class="winner">63.67%</td>
+              <td>47.74%</td>
+              <td>Airbnb has stronger brand loyalty — users come back directly without searching</td>
+            </tr>
+            <tr>
+              <td>Paid Search</td>
+              <td>11.70%</td>
+              <td class="winner">21.49%</td>
+              <td>Booking invests ~2× more in paid search — more aggressive customer acquisition</td>
+            </tr>
+            <tr>
+              <td>Mobile Web Share</td>
+              <td>54.47%</td>
+              <td class="winner">61.68%</td>
+              <td>Booking skews more mobile — global travelers booking on the go</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FUNNEL MATH -->
+      <div class="case-section reveal">
+        <div class="case-section-title">Estimated Conversion Funnel (Feb 2026)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:24px;">
           <div style="background:var(--bg2);padding:28px 24px;border:1px solid var(--border);">
-            <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Airbnb</div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <div style="background:var(--blue);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Homepage / Search</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--blue);margin:0 auto;"></div>
-              <div style="background:rgba(26,86,219,0.75);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Category Browse (Tiny Homes, Beachfront…)</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.75);margin:0 auto;"></div>
-              <div style="background:rgba(26,86,219,0.55);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Listing Page (photos, host story, reviews)</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.55);margin:0 auto;"></div>
-              <div style="background:rgba(26,86,219,0.35);color:var(--ink);padding:12px 16px;font-size:13px;text-align:center;">Date & Guest Selection</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(26,86,219,0.35);margin:0 auto;"></div>
-              <div style="background:var(--yellow);color:var(--ink);padding:12px 16px;font-size:13px;font-weight:500;text-align:center;">Reserve / Book → Confirmed</div>
+            <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;color:var(--blue);">Airbnb</div>
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <div style="background:var(--blue);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Monthly visits</span><span style="font-weight:500;">95,090,000</span></div>
+              <div style="background:rgba(26,86,219,0.7);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>After bounce (30.23%)</span><span style="font-weight:500;">66,330,000</span></div>
+              <div style="background:rgba(26,86,219,0.5);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Enter listing page (~20%)</span><span style="font-weight:500;">13,266,000</span></div>
+              <div style="background:rgba(26,86,219,0.3);color:var(--ink);padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Reach checkout (~15%)</span><span style="font-weight:500;">1,989,900</span></div>
+              <div style="background:var(--yellow);color:var(--ink);padding:10px 16px;font-size:12px;font-weight:500;display:flex;justify-content:space-between;"><span>Complete booking (~2%)</span><span>~39,800</span></div>
             </div>
-            <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Emotional journey first. Users browse categories and listings before committing. Trust built through host profiles, reviews, and Superhost badges.</div>
           </div>
-          <!-- Booking.com funnel -->
           <div style="background:var(--bg2);padding:28px 24px;border:1px solid var(--border);">
             <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Booking.com</div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <div style="background:var(--ink);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Homepage (Search bar is the hero)</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--ink);margin:0 auto;"></div>
-              <div style="background:rgba(15,15,14,0.75);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Search Results (filters, map, sorted list)</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.75);margin:0 auto;"></div>
-              <div style="background:rgba(15,15,14,0.55);color:#fff;padding:12px 16px;font-size:13px;text-align:center;">Property Page (urgency signals, price)</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.55);margin:0 auto;"></div>
-              <div style="background:rgba(15,15,14,0.35);color:var(--ink);padding:12px 16px;font-size:13px;text-align:center;">Room Selection + Price Breakdown</div>
-              <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid rgba(15,15,14,0.35);margin:0 auto;"></div>
-              <div style="background:var(--yellow);color:var(--ink);padding:12px 16px;font-size:13px;font-weight:500;text-align:center;">Reserve Now, Pay Later → Confirmed</div>
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <div style="background:var(--ink);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Monthly visits</span><span style="font-weight:500;">523,300,000</span></div>
+              <div style="background:rgba(15,15,14,0.7);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>After bounce (26.11%)</span><span style="font-weight:500;">386,700,000</span></div>
+              <div style="background:rgba(15,15,14,0.5);color:#fff;padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Enter property page (~15%)</span><span style="font-weight:500;">58,000,000</span></div>
+              <div style="background:rgba(15,15,14,0.25);color:var(--ink);padding:10px 16px;font-size:12px;display:flex;justify-content:space-between;"><span>Reach checkout (~20%)</span><span style="font-weight:500;">11,600,000</span></div>
+              <div style="background:var(--yellow);color:var(--ink);padding:10px 16px;font-size:12px;font-weight:500;display:flex;justify-content:space-between;"><span>Complete booking (~3%)</span><span>~348,000</span></div>
             </div>
-            <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Task-completion first. Designed for speed and decision confidence. Urgency cues ("Only 2 left!") and flexible cancellation reduce booking hesitation.</div>
           </div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:20px 24px;">
+          <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--muted);">The CRO Opportunity for Airbnb</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.8;">If Airbnb reduced its bounce rate by just <strong>4 percentage points</strong> (matching Booking's 26.11%), it would retain an estimated <strong>3.9M additional visitors/month</strong>. At a 2% booking conversion rate and $150 average order value, that's roughly <strong>$11.7M in incremental monthly revenue</strong> — from one UX improvement.</div>
         </div>
       </div>
 
@@ -565,29 +622,29 @@
         </div>
       </div>
 
-      <!-- KEY INSIGHTS -->
+      <!-- KEY INSIGHTS based on personal walkthrough -->
       <div class="case-section reveal">
-        <div class="case-section-title">Key CRO Insights</div>
+        <div class="case-section-title">Key Insights — From Firsthand User Walkthrough</div>
         <div class="insights-grid">
           <div class="insight-card">
             <div class="insight-icon">1</div>
-            <div class="insight-title">Emotion converts differently than urgency</div>
-            <div class="insight-text">Airbnb's design converts through aspiration and belonging. Booking.com converts through urgency and efficiency. Both work — but for different user intents. Leisure travelers browse; business travelers decide fast.</div>
+            <div class="insight-title">14.96 pages/visit reveals an "Instagram problem"</div>
+            <div class="insight-text">Airbnb's high-quality photography and category browsing creates a scroll loop — users keep browsing without committing. This drives engagement metrics up but conversion down. The platform is more enjoyable to browse than it is easy to book.</div>
           </div>
           <div class="insight-card">
             <div class="insight-icon">2</div>
-            <div class="insight-title">Hidden fees are Airbnb's biggest CRO weakness</div>
-            <div class="insight-text">Research consistently shows late price reveals are the #1 cause of booking abandonment. Airbnb's cleaning and service fees surfacing at checkout create a "price shock" that drives users back to Booking.com.</div>
+            <div class="insight-title">Booking's lower bounce rate is by design</div>
+            <div class="insight-text">Booking.com's homepage forces users to input a destination before seeing anything. This filters out casual browsers and channels only high-intent visitors into the funnel — explaining both the lower bounce rate and the higher paid search investment (21.49%).</div>
           </div>
           <div class="insight-card">
             <div class="insight-icon">3</div>
-            <div class="insight-title">Airbnb is adopting Booking's CRO playbook</div>
-            <div class="insight-text">Airbnb's 2025 updates — 24hr free cancellation, Reserve Now Pay Later, flexible search carousels — directly mirror Booking's proven tactics. This shows Booking.com's data-driven CRO approach is winning at the platform level.</div>
+            <div class="insight-title">Late fee reveal is Airbnb's #1 conversion killer</div>
+            <div class="insight-text">In a live walkthrough, Airbnb's checkout skipped room selection entirely and surfaced cleaning fees and service charges only at the payment page. Booking showed total tax-inclusive price at the room selection stage. This "price shock" moment is where Airbnb loses high-intent users.</div>
           </div>
           <div class="insight-card">
             <div class="insight-icon">4</div>
-            <div class="insight-title">Sticky CTAs and above-fold placement matter</div>
-            <div class="insight-text">CRO research shows placing a CTA above the fold increases engagement, and making it sticky on mobile drives measurable checkout completion gains. Both platforms apply this — but Airbnb's visual hierarchy executes it more elegantly.</div>
+            <div class="insight-title">Airbnb wins on intent-to-book, loses on completion</div>
+            <div class="insight-text">Despite Booking's data advantages, a firsthand test found Airbnb's visual design and host storytelling more likely to generate the "I want to book this" impulse. The paradox: Airbnb creates more desire but fewer completed bookings — a classic engagement-vs-conversion tradeoff.</div>
           </div>
         </div>
       </div>
