@@ -86,7 +86,7 @@
   .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 600px;
+    max-width: 680px;
     opacity: 0;
     transform: translateY(24px);
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
@@ -96,16 +96,27 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-subtitle {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 28px;
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
     opacity: 0;
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+  .hero-eyebrow-line {
+    width: 32px;
+    height: 1px;
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
   .hero-title {
@@ -117,6 +128,41 @@
     color: var(--ink);
     opacity: 0;
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+
+  .hero-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(17px, 2vw, 24px);
+    color: var(--warm);
+    line-height: 1.4;
+    margin-top: 30px;
+    max-width: 460px;
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+  }
+  .hero-meta span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .hero-meta-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
   }
 
   .drag-hint {
@@ -540,11 +586,24 @@
 
   <!-- Hero text content -->
   <div class="hero-content">
-    <p class="hero-subtitle">Marketing Analyst &nbsp;·&nbsp; SEO Specialist &nbsp;·&nbsp; MBA Candidate</p>
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <p class="hero-subtitle">UCR MBA Candidate &nbsp;·&nbsp; Los Angeles</p>
+    </div>
     <h1 class="hero-title">
       Keang<br>
       <em>Liu.</em>
     </h1>
+    <p class="hero-tagline">Data tells you what happened.<br>I tell you what to do next.</p>
+    <div class="hero-meta">
+      <span>Digital Marketing</span>
+      <div class="hero-meta-sep"></div>
+      <span>Analytics</span>
+      <div class="hero-meta-sep"></div>
+      <span>SEO Strategy</span>
+      <div class="hero-meta-sep"></div>
+      <span>Brand</span>
+    </div>
   </div>
 
   <!-- Drag hint -->
