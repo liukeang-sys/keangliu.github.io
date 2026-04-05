@@ -13,18 +13,25 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #ffffff;
-    --bg2: #f6f6f4;
-    --ink: #0f0f0e;
-    --muted: #8a8a86;
-    --border: #e2e2de;
-    --yellow: #f5c800;
-    --blue: #1a56db;
+    --bg: #F7F5F0;
+    --bg2: #ECEAE4;
+    --ink: #1A1A18;
+    --muted: #AAAA98;
+    --border: #E8E4DC;
+    --accent-1: #FF6B6B;
+    --accent-2: #FFD93D;
+    --accent-3: #6BCB77;
+    --accent-4: #4D96FF;
+    --warm: #C8B89A;
+    --white: #FFFFFF;
+    /* aliases for existing sections */
+    --yellow: #FFD93D;
+    --blue: #4D96FF;
     --blue-bg: #eef2fd;
   }
 
@@ -33,7 +40,7 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     font-size: 15px;
     line-height: 1.6;
@@ -42,77 +49,119 @@
 
   /* ── NAV ── */
   nav {
-    position: sticky; top: 0; z-index: 200;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 56px;
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px);
+    background: rgba(247, 245, 240, 0.92);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    font-family: 'Instrument Serif', serif;
-    font-size: 19px; letter-spacing: -0.01em; color: var(--ink);
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; letter-spacing: -0.01em; color: var(--ink);
+    text-decoration: none;
   }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none; transition: color .2s;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .25s ease;
   }
   .nav-links a:hover { color: var(--ink); }
-  .nav-btn {
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; background: var(--ink); color: #fff;
-    border: none; padding: 10px 24px; cursor: pointer; transition: background .2s;
-  }
-  .nav-btn:hover { background: var(--blue); }
 
   /* ── HERO ── */
   .hero {
-    display: grid;
-    grid-template-rows: auto auto;
-    padding: 80px 56px 64px;
-    border-bottom: 1px solid var(--border);
-    min-height: 90vh;
-    justify-content: stretch;
+    position: relative;
+    min-height: 100vh;
+    padding: 140px 56px 80px;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, var(--warm) 1px, transparent 1px);
+    background-size: 28px 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 56px; }
-  .hero-eyebrow {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 11px; color: var(--muted); letter-spacing: 0.16em;
-    text-transform: uppercase; margin-bottom: 32px;
-  }
-  .pulse-dot {
-    width: 8px; height: 8px; background: var(--yellow); border-radius: 50%;
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
 
-  .hero-name {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(88px, 12vw, 148px);
-    line-height: 0.88; letter-spacing: -0.035em; color: var(--ink);
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   }
-  .hero-name .blue-italic { font-style: italic; color: var(--blue); }
 
-  .hero-bottom {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    padding-top: 40px; border-top: 1px solid var(--border); gap: 48px;
+  @keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
   }
-  .hero-bio {
-    font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 380px;
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
   }
-  .hero-stats { display: flex; gap: 48px; flex-shrink: 0; }
-  .stat { text-align: right; }
-  .stat-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 40px; line-height: 1; letter-spacing: -0.025em;
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(64px, 9vw, 108px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
     color: var(--ink);
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   }
-  .stat-label {
-    font-size: 10px; color: var(--muted); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-top: 5px;
+
+  .drag-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 56px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    user-select: none;
   }
+  .drag-hint::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--muted);
+    display: inline-block;
+  }
+
+  /* ── FLOATING ELEMENTS ── */
+  .float-el {
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+    filter: drop-shadow(0 8px 24px rgba(26,26,24,0.08));
+    transition: filter 0.2s ease;
+    opacity: 0;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .float-el:hover {
+    filter: drop-shadow(0 12px 32px rgba(26,26,24,0.14));
+  }
+  .float-el:active { cursor: grabbing; }
+
+  #float-bar     { top: 18%; left: 62%; animation-delay: 0.4s; }
+  #float-browser { top:  8%; left: 44%; animation-delay: 0.5s; }
+  #float-pills   { top: 52%; left: 68%; animation-delay: 0.55s; }
+  #float-badge   { top: 58%; left: 42%; animation-delay: 0.6s; }
+  #float-line    { top: 22%; left: 78%; animation-delay: 0.65s; }
 
   /* ── MARQUEE ── */
   .marquee {
@@ -241,7 +290,7 @@
   .cta-btn {
     display: inline-flex; align-items: center; gap: 10px;
     background: var(--ink); color: #fff;
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
     text-transform: uppercase; padding: 14px 26px;
     cursor: pointer; border: none; transition: background .2s;
@@ -286,6 +335,7 @@
     width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
     animation: pulse 2s infinite;
   }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
   .contact-title {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(60px, 8.5vw, 112px);
@@ -295,7 +345,7 @@
   .linkedin-btn {
     display: inline-flex; align-items: center; gap: 10px;
     background: var(--blue); color: #fff;
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
     text-transform: uppercase; padding: 14px 32px;
     text-decoration: none; border: none; cursor: pointer;
@@ -321,7 +371,7 @@
     text-transform: uppercase; color: var(--muted);
   }
   .form-group input, .form-group textarea {
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 14px; font-weight: 300; color: var(--ink);
     background: var(--bg); border: 1px solid var(--border);
     padding: 13px 16px; outline: none;
@@ -331,7 +381,7 @@
   .form-group input::placeholder, .form-group textarea::placeholder { color: #c0c0bb; }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); }
   .form-submit {
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
     text-transform: uppercase; background: var(--ink); color: #fff;
     border: none; padding: 15px 32px; cursor: pointer;
@@ -364,44 +414,142 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Keang Liu</div>
+  <a href="index.html" class="nav-logo">Keang Liu</a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#resources">Resources</a></li>
+    <li><a href="free-resources.html">Resources</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-btn">Get In Touch</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-top">
-    <div class="hero-eyebrow">
-      <span class="pulse-dot"></span>
-      MBA Candidate &nbsp;·&nbsp; UCR &nbsp;·&nbsp; Digital Marketing & Analytics
-    </div>
-    <h1 class="hero-name">
+<section class="hero" id="home">
+
+  <!-- Floating: Bar Chart (Analytics) -->
+  <div class="float-el" id="float-bar">
+    <svg width="158" height="132" viewBox="0 0 158 132" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="158" height="132" rx="12" fill="white" stroke="#E8E4DC" stroke-width="0.5"/>
+      <text x="14" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#AAAA98" letter-spacing="1">ANALYTICS</text>
+      <rect x="14"  y="92" width="16" height="24" rx="2" fill="#FF6B6B" opacity="0.6"/>
+      <rect x="36"  y="70" width="16" height="46" rx="2" fill="#FF6B6B" opacity="0.75"/>
+      <rect x="58"  y="52" width="16" height="64" rx="2" fill="#FF6B6B"/>
+      <rect x="80"  y="62" width="16" height="54" rx="2" fill="#FF6B6B" opacity="0.8"/>
+      <rect x="102" y="38" width="16" height="78" rx="2" fill="#FF6B6B"/>
+      <rect x="124" y="48" width="16" height="68" rx="2" fill="#FF6B6B" opacity="0.9"/>
+      <line x1="14" y1="116" x2="144" y2="116" stroke="#E8E4DC" stroke-width="0.5"/>
+      <text x="14" y="128" font-family="DM Sans, sans-serif" font-size="8" fill="#AAAA98">2025</text>
+      <text x="126" y="128" font-family="DM Sans, sans-serif" font-size="8" fill="#AAAA98">2026</text>
+    </svg>
+  </div>
+
+  <!-- Floating: Browser Mockup (Citrion) -->
+  <div class="float-el" id="float-browser">
+    <svg width="192" height="124" viewBox="0 0 192 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="192" height="124" rx="10" fill="white" stroke="#E8E4DC" stroke-width="0.5"/>
+      <!-- Chrome bar -->
+      <rect width="192" height="30" rx="10" fill="#4D96FF"/>
+      <rect y="20" width="192" height="10" fill="#4D96FF"/>
+      <!-- Traffic lights -->
+      <circle cx="18" cy="15" r="4.5" fill="rgba(255,255,255,0.45)"/>
+      <circle cx="33" cy="15" r="4.5" fill="rgba(255,255,255,0.45)"/>
+      <circle cx="48" cy="15" r="4.5" fill="rgba(255,255,255,0.45)"/>
+      <!-- URL bar -->
+      <rect x="62" y="8" width="116" height="14" rx="7" fill="rgba(255,255,255,0.22)"/>
+      <text x="85" y="19" font-family="DM Sans, sans-serif" font-size="7.5" fill="white">citrion.site</text>
+      <!-- Page content -->
+      <text x="16" y="56" font-family="DM Serif Display, serif" font-size="15" fill="#1A1A18" font-style="italic">Citrion</text>
+      <rect x="16" y="62" width="88" height="3.5" rx="2" fill="#E8E4DC"/>
+      <rect x="16" y="70" width="64" height="3.5" rx="2" fill="#E8E4DC"/>
+      <rect x="16" y="84" width="52" height="16" rx="4" fill="#4D96FF"/>
+      <text x="42" y="96" font-family="DM Sans, sans-serif" font-size="7.5" fill="white" text-anchor="middle">Visit Site</text>
+      <!-- Decorative accent pill -->
+      <rect x="100" y="84" width="40" height="16" rx="8" fill="#4D96FF" opacity="0.12"/>
+      <text x="120" y="96" font-family="DM Sans, sans-serif" font-size="7" fill="#4D96FF" text-anchor="middle">CMO</text>
+    </svg>
+  </div>
+
+  <!-- Floating: Keyword Pills (SEO/SEM) -->
+  <div class="float-el" id="float-pills">
+    <svg width="178" height="144" viewBox="0 0 178 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="178" height="144" rx="12" fill="white" stroke="#E8E4DC" stroke-width="0.5"/>
+      <text x="14" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#AAAA98" letter-spacing="1">SEO / SEM</text>
+      <!-- Row 1 -->
+      <rect x="14" y="30" width="40" height="20" rx="10" fill="#6BCB77" opacity="0.18"/>
+      <text x="34" y="44" font-family="DM Sans, sans-serif" font-size="9" fill="#3fa84a" text-anchor="middle">SEO</text>
+      <rect x="60" y="30" width="64" height="20" rx="10" fill="#6BCB77" opacity="0.18"/>
+      <text x="92" y="44" font-family="DM Sans, sans-serif" font-size="9" fill="#3fa84a" text-anchor="middle">Google Ads</text>
+      <!-- Row 2 -->
+      <rect x="14" y="56" width="60" height="20" rx="10" fill="#4D96FF" opacity="0.15"/>
+      <text x="44" y="70" font-family="DM Sans, sans-serif" font-size="9" fill="#4D96FF" text-anchor="middle">Keywords</text>
+      <rect x="80" y="56" width="40" height="20" rx="10" fill="#FF6B6B" opacity="0.15"/>
+      <text x="100" y="70" font-family="DM Sans, sans-serif" font-size="9" fill="#FF6B6B" text-anchor="middle">SEM</text>
+      <!-- Row 3 -->
+      <rect x="14" y="82" width="40" height="20" rx="10" fill="#FFD93D" opacity="0.35"/>
+      <text x="34" y="96" font-family="DM Sans, sans-serif" font-size="9" fill="#9a7800" text-anchor="middle">SERP</text>
+      <rect x="60" y="82" width="80" height="20" rx="10" fill="#6BCB77" opacity="0.18"/>
+      <text x="100" y="96" font-family="DM Sans, sans-serif" font-size="9" fill="#3fa84a" text-anchor="middle">Link Building</text>
+      <!-- Row 4 -->
+      <rect x="14" y="108" width="64" height="20" rx="10" fill="#4D96FF" opacity="0.15"/>
+      <text x="46" y="122" font-family="DM Sans, sans-serif" font-size="9" fill="#4D96FF" text-anchor="middle">Analytics</text>
+      <rect x="84" y="108" width="52" height="20" rx="10" fill="#FF6B6B" opacity="0.15"/>
+      <text x="110" y="122" font-family="DM Sans, sans-serif" font-size="9" fill="#FF6B6B" text-anchor="middle">Content</text>
+    </svg>
+  </div>
+
+  <!-- Floating: MBA Badge (UCR) -->
+  <div class="float-el" id="float-badge">
+    <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="66" cy="66" r="64" fill="#FFD93D" opacity="0.12" stroke="#FFD93D" stroke-width="1.2"/>
+      <circle cx="66" cy="66" r="52" fill="white" stroke="#E8E4DC" stroke-width="0.5"/>
+      <text x="66" y="54" font-family="DM Serif Display, serif" font-size="22" font-style="italic" fill="#1A1A18" text-anchor="middle">MBA</text>
+      <line x1="36" y1="63" x2="96" y2="63" stroke="#E8E4DC" stroke-width="0.6"/>
+      <text x="66" y="78" font-family="DM Sans, sans-serif" font-size="8.5" fill="#AAAA98" letter-spacing="1.5" text-anchor="middle">UC RIVERSIDE</text>
+      <text x="66" y="92" font-family="DM Sans, sans-serif" font-size="8" fill="#AAAA98" text-anchor="middle">Class of 2026</text>
+      <text x="30" y="70" font-family="DM Sans, sans-serif" font-size="9" fill="#FFD93D">✦</text>
+      <text x="96" y="70" font-family="DM Sans, sans-serif" font-size="9" fill="#FFD93D">✦</text>
+    </svg>
+  </div>
+
+  <!-- Floating: Line Chart (Case Study) -->
+  <div class="float-el" id="float-line">
+    <svg width="172" height="122" viewBox="0 0 172 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="172" height="122" rx="12" fill="white" stroke="#E8E4DC" stroke-width="0.5"/>
+      <text x="14" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#AAAA98" letter-spacing="1">CASE STUDY</text>
+      <!-- Growth badge -->
+      <rect x="122" y="12" width="40" height="16" rx="8" fill="#FF6B6B" opacity="0.15"/>
+      <text x="142" y="23.5" font-family="DM Sans, sans-serif" font-size="8.5" fill="#FF6B6B" text-anchor="middle">+47%</text>
+      <!-- Grid lines -->
+      <line x1="14" y1="40" x2="158" y2="40" stroke="#E8E4DC" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="14" y1="58" x2="158" y2="58" stroke="#E8E4DC" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="14" y1="76" x2="158" y2="76" stroke="#E8E4DC" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="14" y1="100" x2="158" y2="100" stroke="#E8E4DC" stroke-width="0.5"/>
+      <!-- Area fill -->
+      <polygon points="14,96 40,84 70,70 100,54 130,42 158,30 158,100 14,100" fill="#FF6B6B" opacity="0.07"/>
+      <!-- Line -->
+      <polyline points="14,96 40,84 70,70 100,54 130,42 158,30" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Dots -->
+      <circle cx="14"  cy="96" r="3" fill="white" stroke="#FF6B6B" stroke-width="1.5"/>
+      <circle cx="40"  cy="84" r="3" fill="white" stroke="#FF6B6B" stroke-width="1.5"/>
+      <circle cx="70"  cy="70" r="3" fill="white" stroke="#FF6B6B" stroke-width="1.5"/>
+      <circle cx="100" cy="54" r="3" fill="white" stroke="#FF6B6B" stroke-width="1.5"/>
+      <circle cx="130" cy="42" r="3" fill="white" stroke="#FF6B6B" stroke-width="1.5"/>
+      <circle cx="158" cy="30" r="4" fill="#FF6B6B" stroke="#FF6B6B" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <!-- Hero text content -->
+  <div class="hero-content">
+    <p class="hero-subtitle">Marketing Analyst &nbsp;·&nbsp; SEO Specialist &nbsp;·&nbsp; MBA Candidate</p>
+    <h1 class="hero-title">
       Keang<br>
-      <span class="blue-italic">Liu.</span>
+      <em>Liu.</em>
     </h1>
   </div>
-  <div class="hero-bottom">
-    <p class="hero-bio">Marketing strategist bridging data and creativity — turning campaign metrics into growth, and insights into real impact.</p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">4+</div>
-        <div class="stat-label">Years Exp.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Projects</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3.7</div>
-        <div class="stat-label">GPA</div>
-      </div>
-    </div>
-  </div>
+
+  <!-- Drag hint -->
+  <div class="drag-hint">Drag to explore</div>
+
 </section>
 
 <!-- MARQUEE -->
@@ -565,6 +713,76 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── FLOATING ELEMENTS: float animation + drag ──
+  (function () {
+    const floats = Array.from(document.querySelectorAll('.float-el'));
+    const config = [
+      { amplitude: 7, period: 3200, phase: 0 },
+      { amplitude: 9, period: 4100, phase: 1.1 },
+      { amplitude: 6, period: 3700, phase: 2.3 },
+      { amplitude: 8, period: 4600, phase: 0.7 },
+      { amplitude: 7, period: 3500, phase: 1.9 },
+    ];
+
+    const state = floats.map((el, i) => ({
+      el,
+      ...config[i],
+      dragging: false,
+      dragOffsetX: 0,
+      dragOffsetY: 0,
+    }));
+
+    // Float animation
+    function animate(time) {
+      state.forEach(s => {
+        if (!s.dragging) {
+          const offset = Math.sin((time / s.period) * Math.PI * 2 + s.phase) * s.amplitude;
+          s.el.style.transform = `translateY(${offset}px)`;
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    // Drag: mousedown
+    state.forEach(s => {
+      s.el.addEventListener('mousedown', (e) => {
+        s.dragging = true;
+        s.el.style.cursor = 'grabbing';
+        s.el.style.zIndex = '50';
+        s.el.style.transform = 'translateY(0)';
+        const rect = s.el.getBoundingClientRect();
+        s.dragOffsetX = e.clientX - rect.left;
+        s.dragOffsetY = e.clientY - rect.top;
+        e.preventDefault();
+      });
+    });
+
+    // Drag: mousemove
+    document.addEventListener('mousemove', (e) => {
+      state.forEach(s => {
+        if (!s.dragging) return;
+        const hero = document.querySelector('.hero');
+        const hr = hero.getBoundingClientRect();
+        s.el.style.left   = (e.clientX - hr.left - s.dragOffsetX) + 'px';
+        s.el.style.top    = (e.clientY - hr.top  - s.dragOffsetY) + 'px';
+        s.el.style.right  = 'auto';
+        s.el.style.bottom = 'auto';
+      });
+    });
+
+    // Drag: mouseup
+    document.addEventListener('mouseup', () => {
+      state.forEach(s => {
+        if (s.dragging) {
+          s.dragging = false;
+          s.el.style.cursor = 'grab';
+          s.el.style.zIndex = '';
+        }
+      });
+    });
+  })();
 </script>
 </body>
 </html>
