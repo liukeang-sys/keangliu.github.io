@@ -73,23 +73,26 @@
   .hero {
     position: relative;
     min-height: 100vh;
-    padding: 140px 56px 80px;
+    padding: 140px 56px 100px;
     background-color: var(--bg);
     background-image: radial-gradient(circle, var(--warm) 1px, transparent 1px);
     background-size: 28px 28px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
 
   .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 680px;
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
     opacity: 0;
     transform: translateY(24px);
-    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   }
 
   @keyframes heroFadeIn {
@@ -99,13 +102,14 @@
   .hero-eyebrow {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
     opacity: 0;
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
   }
   .hero-eyebrow-line {
-    width: 32px;
+    width: 28px;
     height: 1px;
     background: var(--muted);
     flex-shrink: 0;
@@ -114,7 +118,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
   }
@@ -122,39 +126,47 @@
   .hero-title {
     font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: clamp(64px, 9vw, 108px);
-    line-height: 0.92;
-    letter-spacing: -0.02em;
+    font-size: clamp(80px, 14vw, 190px);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
     color: var(--ink);
     opacity: 0;
-    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
   }
 
   .hero-tagline {
     font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: clamp(17px, 2vw, 24px);
-    color: var(--warm);
-    line-height: 1.4;
-    margin-top: 30px;
-    max-width: 460px;
+    font-size: clamp(18px, 2.2vw, 28px);
+    color: var(--muted);
+    line-height: 1.45;
+    margin: 36px auto 0;
+    max-width: 580px;
     opacity: 0;
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+  }
+  .hero-highlight {
+    background: var(--accent-2);
+    color: var(--ink);
+    padding: 1px 10px 3px;
+    border-radius: 3px;
+    font-style: italic;
   }
 
   .hero-meta {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 14px;
-    margin-top: 28px;
+    margin-top: 32px;
     opacity: 0;
-    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.58s forwards;
   }
   .hero-meta span {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: var(--muted);
   }
   .hero-meta-sep {
@@ -167,22 +179,24 @@
 
   .drag-hint {
     position: absolute;
-    bottom: 40px;
-    left: 56px;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--muted);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     opacity: 0;
-    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
     user-select: none;
   }
-  .drag-hint::before {
+  .drag-hint::before, .drag-hint::after {
     content: '';
-    width: 24px;
+    width: 20px;
     height: 1px;
     background: var(--muted);
     display: inline-block;
@@ -193,21 +207,29 @@
     position: absolute;
     cursor: grab;
     user-select: none;
-    filter: drop-shadow(0 8px 24px rgba(26,26,24,0.08));
+    filter: drop-shadow(0 8px 24px rgba(26,26,24,0.09));
     transition: filter 0.2s ease;
     opacity: 0;
     animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .float-el:hover {
-    filter: drop-shadow(0 12px 32px rgba(26,26,24,0.14));
+    filter: drop-shadow(0 14px 36px rgba(26,26,24,0.16));
   }
   .float-el:active { cursor: grabbing; }
 
-  #float-bar     { top: 18%; left: 62%; animation-delay: 0.4s; }
-  #float-browser { top:  8%; left: 44%; animation-delay: 0.5s; }
-  #float-pills   { top: 52%; left: 68%; animation-delay: 0.55s; }
-  #float-badge   { top: 58%; left: 42%; animation-delay: 0.6s; }
-  #float-line    { top: 22%; left: 78%; animation-delay: 0.65s; }
+  /* Scattered corners — away from center text */
+  #float-bar     { top: 10%; left:  4%;  animation-delay: 0.4s; }
+  #float-browser { top:  5%; right: 4%; left: auto; animation-delay: 0.5s; }
+  #float-pills   { top: 52%; right: 3%; left: auto; animation-delay: 0.55s; }
+  #float-badge   { bottom: 14%; top: auto; left: 4%; animation-delay: 0.6s; }
+  #float-line    { bottom: 10%; top: auto; right: 4%; left: auto; animation-delay: 0.65s; }
+
+  /* Subtle rotations applied to inner SVG so JS float-anim still works */
+  #float-bar svg     { transform: rotate(-7deg); transform-origin: center; }
+  #float-browser svg { transform: rotate(5deg);  transform-origin: center; }
+  #float-pills svg   { transform: rotate(-4deg); transform-origin: center; }
+  #float-badge svg   { transform: rotate(11deg); transform-origin: center; }
+  #float-line svg    { transform: rotate(-6deg); transform-origin: center; }
 
   /* ── MARQUEE ── */
   .marquee {
@@ -588,19 +610,17 @@
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <p class="hero-subtitle">UCR MBA Candidate &nbsp;·&nbsp; Los Angeles</p>
+      <p class="hero-subtitle">UCR MBA Candidate &nbsp;·&nbsp; Digital Marketing &nbsp;·&nbsp; Los Angeles</p>
+      <div class="hero-eyebrow-line"></div>
     </div>
-    <h1 class="hero-title">
-      Keang<br>
-      <em>Liu.</em>
-    </h1>
-    <p class="hero-tagline">Data tells you what happened.<br>I tell you what to do next.</p>
+    <h1 class="hero-title">Keang <em>Liu.</em></h1>
+    <p class="hero-tagline">Data tells you what happened.<br>I tell you what to do <mark class="hero-highlight">next.</mark></p>
     <div class="hero-meta">
-      <span>Digital Marketing</span>
-      <div class="hero-meta-sep"></div>
       <span>Analytics</span>
       <div class="hero-meta-sep"></div>
-      <span>SEO Strategy</span>
+      <span>SEO / SEM</span>
+      <div class="hero-meta-sep"></div>
+      <span>Campaign Strategy</span>
       <div class="hero-meta-sep"></div>
       <span>Brand</span>
     </div>
